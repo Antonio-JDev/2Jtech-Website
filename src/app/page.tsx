@@ -1,0 +1,36 @@
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { CatalogCarousel } from "@/components/sections/CatalogCarousel";
+import { Clients } from "@/components/sections/Clients";
+import { Services } from "@/components/sections/Services";
+import { Process } from "@/components/sections/Process";
+import { Technologies } from "@/components/sections/Technologies";
+import { Projects } from "@/components/sections/Projects";
+import { Differentials } from "@/components/sections/Differentials";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { CTA } from "@/components/sections/CTA";
+import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/sections/Footer";
+import KineticGrid from "@/components/ui/kinetic-grid";
+
+export default function HomePage() {
+  return (
+    <KineticGrid className="overflow-x-hidden">
+      <Header />
+      <main>
+        <Hero />
+        <CatalogCarousel />
+        <Clients />
+        <Services />
+        <Process />
+        <Technologies />
+        <Projects />
+        <Differentials />
+        <Testimonials />
+        <CTA />
+        <Contact />
+      </main>
+      <Footer />
+    </KineticGrid>
+  );
+}

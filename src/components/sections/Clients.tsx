@@ -1,0 +1,28 @@
+"use client";
+
+import { CLIENTS } from "@/lib/content";
+import { Reveal } from "@/lib/reveal";
+
+export function Clients() {
+  return (
+    <section className="border-y border-white/5 bg-surface/20 py-10 backdrop-blur-[2px]" aria-label="Clientes">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <Reveal>
+          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.22em] text-white/75">
+            Empresas que confiam na 2J Tech
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {CLIENTS.map((client) => (
+              <span
+                key={client}
+                className="text-lg font-semibold tracking-[0.08em] text-white/70 transition-colors hover:text-white"
+              >
+                {client}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
