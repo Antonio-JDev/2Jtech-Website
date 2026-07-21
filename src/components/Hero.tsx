@@ -10,9 +10,9 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[100svh] overflow-hidden pt-[72px]"
+      className="relative isolate overflow-hidden pt-[72px] max-[779px]:min-h-0 min-h-[100svh]"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:px-8 lg:grid-cols-2 lg:gap-10 lg:py-20">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 md:px-8 md:py-16 lg:grid-cols-2 lg:gap-10 lg:py-20">
         <Reveal direction="left" className="relative z-10">
           <h1 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
             Transformamos desafios em{" "}
@@ -54,7 +54,7 @@ export function Hero() {
                 }`}
               >
                 <p className="text-lg font-semibold text-white">{stat.value}</p>
-                <p className="mt-1 text-[11px] leading-snug text-white/80">{stat.label}</p>
+                <p className="mt-1 text-[11px] leading-snug text-white/90">{stat.label}</p>
               </div>
             ))}
           </div>

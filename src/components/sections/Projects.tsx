@@ -8,7 +8,7 @@ import { FitScrollGrid } from "@/lib/fit-scroll";
 
 export function Projects() {
   return (
-    <section id="projetos" className="section-padding overflow-hidden border-t border-white/5">
+    <section id="projetos" className="section-padding overflow-x-hidden border-t border-white/5">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
@@ -35,7 +35,7 @@ export function Projects() {
                   className="mt-1 shrink-0 text-muted transition-colors group-hover:text-neon"
                 />
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/85">{project.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-white/95">{project.description}</p>
             </article>
           ))}
         </FitScrollGrid>

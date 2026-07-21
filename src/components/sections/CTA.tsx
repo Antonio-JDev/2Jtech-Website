@@ -12,11 +12,11 @@ export function CTA() {
 
       <div className="mx-auto max-w-4xl px-5 text-center md:px-8">
         <Reveal>
-          <div className="glass glow-neon-soft rounded-[28px] px-6 py-14 sm:px-12">
+          <div className="glass glow-neon-soft rounded-[28px] px-6 py-10 sm:px-12 sm:py-14">
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
               Seu próximo software começa aqui.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg">
               Vamos transformar sua ideia em uma solução digital robusta, segura e
               preparada para crescer junto com o seu negócio.
             </p>

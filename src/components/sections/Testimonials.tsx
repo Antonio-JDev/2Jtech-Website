@@ -7,7 +7,7 @@ import { FitScrollGrid } from "@/lib/fit-scroll";
 
 export function Testimonials() {
   return (
-    <section className="section-padding overflow-hidden border-t border-white/5">
+    <section className="section-padding overflow-x-hidden border-t border-white/5">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
@@ -30,7 +30,7 @@ export function Testimonials() {
                   <span className="block text-sm font-semibold text-white">
                     {item.author}
                   </span>
-                  <span className="mt-1 block text-xs text-white/75">{item.role}</span>
+                  <span className="mt-1 block text-xs text-white/90">{item.role}</span>
                 </cite>
               </footer>
             </blockquote>

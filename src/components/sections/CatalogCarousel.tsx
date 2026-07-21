@@ -26,7 +26,7 @@ function CatalogCard({
       <div className={`absolute inset-0 bg-gradient-to-br ${project.cover}`} />
       <div className="relative p-4">
         <div className="mb-3 flex items-center justify-between">
-          <span className="rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/80">
+          <span className="rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/90">
             {project.category}
           </span>
           <span className="inline-flex items-center gap-1 rounded-full border border-neon/30 bg-neon/10 px-2.5 py-1 text-[10px] font-semibold text-neon opacity-0 transition group-hover:opacity-100">
@@ -64,7 +64,7 @@ function CatalogCard({
               {screen.rows.slice(0, 2).map((row) => (
                 <div
                   key={row}
-                  className="truncate rounded-[8px] border border-white/6 bg-white/[0.02] px-2 py-1.5 text-[9px] text-white/70"
+                  className="truncate rounded-[8px] border border-white/6 bg-white/[0.02] px-2 py-1.5 text-[9px] text-white/85"
                 >
                   {row}
                 </div>
@@ -74,7 +74,7 @@ function CatalogCard({
         </div>
 
         <h3 className="mt-3 text-base font-semibold text-white">{project.title}</h3>
-        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-white/75">
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-white/90">
           {project.tagline}
         </p>
       </div>
@@ -139,7 +139,7 @@ export function CatalogCarousel() {
           </div>
         </div>
 
-        <p className="mt-4 text-center text-xs text-white/55">
+        <p className="mt-4 text-center text-xs text-white/80">
           Passe o mouse ou o dedo para pausar · Clique para abrir a pré-visitação
         </p>
       </div>

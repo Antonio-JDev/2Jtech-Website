@@ -32,7 +32,7 @@ const ICONS = [
 
 export function Services() {
   return (
-    <section id="servicos" className="section-padding relative overflow-hidden">
+    <section id="servicos" className="section-padding relative overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
@@ -42,7 +42,10 @@ export function Services() {
           />
         </Reveal>
 
-        <FitScrollGrid className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <FitScrollGrid
+          variant="tall"
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+        >
           {SERVICES.map((service, index) => {
             const Icon = ICONS[index] ?? Code2;
             return (
@@ -54,7 +57,7 @@ export function Services() {
                   <Icon size={18} />
                 </div>
                 <h3 className="text-base font-semibold text-white">{service.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/85">
+                <p className="mt-2 text-sm leading-relaxed text-white/95">
                   {service.description}
                 </p>
               </article>

@@ -108,22 +108,24 @@ export const PROCESS_STEPS = [
 ] as const;
 
 export const TECHNOLOGIES = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Express",
-  "NestJS",
-  "PostgreSQL",
-  "Docker",
-  "Linux",
-  "GitHub",
-  "Prisma",
-  "OpenAI",
-  "Claude",
-  "AWS",
-  "Azure",
+  { id: "react", name: "React" },
+  { id: "nextjs", name: "Next.js" },
+  { id: "typescript", name: "TypeScript" },
+  { id: "nodejs", name: "Node.js" },
+  { id: "express", name: "Express" },
+  { id: "nestjs", name: "NestJS" },
+  { id: "postgresql", name: "PostgreSQL" },
+  { id: "docker", name: "Docker" },
+  { id: "linux", name: "Linux" },
+  { id: "github", name: "GitHub" },
+  { id: "prisma", name: "Prisma" },
+  { id: "openai", name: "OpenAI" },
+  { id: "claude", name: "Claude" },
+  { id: "aws", name: "AWS" },
+  { id: "azure", name: "Azure" },
 ] as const;
+
+export type Technology = (typeof TECHNOLOGIES)[number];
 
 export const PROJECTS = [
   {

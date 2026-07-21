@@ -22,7 +22,7 @@ export function Footer() {
               2J <span className="text-neon">TECH</span>
             </span>
           </Link>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/90">
             Softwares, Consultoria & Gestão. Construímos soluções digitais premium
             para empresas que buscam inovação com autoridade.
           </p>

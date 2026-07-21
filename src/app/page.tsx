@@ -15,7 +15,7 @@ import KineticGrid from "@/components/ui/kinetic-grid";
 
 export default function HomePage() {
   return (
-    <KineticGrid className="overflow-x-hidden">
+    <KineticGrid className="overflow-x-clip">
       <Header />
       <main>
         <Hero />

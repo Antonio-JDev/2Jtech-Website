@@ -7,7 +7,7 @@ import { FitScrollGrid } from "@/lib/fit-scroll";
 
 export function Differentials() {
   return (
-    <section className="section-padding overflow-hidden border-t border-white/5">
+    <section className="section-padding overflow-x-hidden border-t border-white/5">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
@@ -23,7 +23,7 @@ export function Differentials() {
               <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-neon shadow-[0_0_12px_rgba(0,239,252,0.6)]" />
               <div>
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/85">{item.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/95">{item.description}</p>
               </div>
             </article>
           ))}

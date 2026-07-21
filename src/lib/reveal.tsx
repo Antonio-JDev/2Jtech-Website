@@ -11,9 +11,9 @@ type RevealProps = {
 };
 
 const offsets = {
-  up: { y: 16, x: 0 },
-  left: { x: -20, y: 0 },
-  right: { x: 20, y: 0 },
+  up: { y: 12, x: 0 },
+  left: { x: -14, y: 0 },
+  right: { x: 14, y: 0 },
   none: { x: 0, y: 0 },
 };
 
@@ -33,12 +33,12 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, ...offset }}
+      initial={{ opacity: 0.88, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount: 0.12, margin: "0px 0px -40px 0px" }}
+      viewport={{ once: true, amount: 0.08, margin: "0px 0px 10% 0px" }}
       transition={{
-        duration: 0.28,
-        delay: Math.min(delay, 0.05),
+        duration: 0.32,
+        delay: Math.min(delay, 0.04),
         ease: [0.16, 1, 0.3, 1],
       }}
     >

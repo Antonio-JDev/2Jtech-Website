@@ -7,7 +7,7 @@ import { FitScrollGrid } from "@/lib/fit-scroll";
 
 export function Process() {
   return (
-    <section id="sobre" className="section-padding relative overflow-hidden border-t border-white/5">
+    <section id="sobre" className="section-padding relative overflow-x-hidden border-t border-white/5">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,239,252,0.06),transparent_60%)]" />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
@@ -24,9 +24,9 @@ export function Process() {
               key={step.step}
               className="glass relative h-full overflow-hidden rounded-[18px] p-6"
             >
-              <span className="text-4xl font-semibold text-neon/25">{step.step}</span>
+              <span className="text-4xl font-semibold text-neon/45">{step.step}</span>
               <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">{step.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-white/95">{step.description}</p>
             </article>
           ))}
         </FitScrollGrid>
