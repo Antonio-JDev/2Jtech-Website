@@ -123,6 +123,7 @@ export const TECHNOLOGIES = [
   { id: "claude", name: "Claude" },
   { id: "aws", name: "AWS" },
   { id: "azure", name: "Azure" },
+  { id: "cloudflare", name: "Cloudflare" },
 ] as const;
 
 export type Technology = (typeof TECHNOLOGIES)[number];

@@ -1,19 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { useReducedMotion } from "framer-motion";
 import { TECHNOLOGIES, type Technology } from "@/lib/content";
-import { TechIcon } from "@/lib/tech-icons";
+import { TECH_COLORS, TechIcon } from "@/lib/tech-icons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/lib/reveal";
 
 function TechBadge({ id, name }: Technology) {
+  const brand = TECH_COLORS[id];
+
   return (
-    <div className="group flex shrink-0 items-center gap-3 rounded-[16px] border border-white/12 bg-[#0c0c0c]/90 px-4 py-3 shadow-[0_12px_32px_rgba(0,0,0,0.28)] transition duration-300 hover:border-white/22 hover:bg-[#101010]">
-      <span className="flex h-9 w-9 items-center justify-center rounded-[12px] border border-white/10 bg-white/[0.04] text-white/90 transition duration-300 group-hover:border-neon/35 group-hover:text-neon">
+    <div
+      className="group flex shrink-0 items-center gap-3 rounded-[16px] border bg-[#0c0c0c]/95 px-4 py-3 shadow-[0_12px_32px_rgba(0,0,0,0.28)] transition duration-300 hover:shadow-[0_14px_40px_var(--tech-glow)]"
+      style={
+        {
+          "--tech-color": brand.icon,
+          "--tech-glow": brand.glow,
+          borderColor:
+            "color-mix(in srgb, var(--tech-color) 34%, rgba(255,255,255,0.1))",
+        } as CSSProperties
+      }
+    >
+      <span
+        className="flex h-9 w-9 items-center justify-center rounded-[12px] border transition duration-300"
+        style={{
+          color: "var(--tech-color)",
+          borderColor: "color-mix(in srgb, var(--tech-color) 42%, transparent)",
+          background: "var(--tech-glow)",
+        }}
+      >
         <TechIcon id={id} className="h-[18px] w-[18px]" />
       </span>
-      <span className="pr-1 text-sm font-medium tracking-wide text-white/90">
+      <span className="pr-1 text-sm font-medium tracking-wide text-white">
         {name}
       </span>
     </div>

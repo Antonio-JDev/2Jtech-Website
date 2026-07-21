@@ -6,6 +6,10 @@ export type CatalogScreen = {
   accent: string;
   stats: { label: string; value: string }[];
   rows: string[];
+  /** @deprecated Prefer `images` — kept for single-shot screenshots */
+  image?: string;
+  /** One or more real screenshots under /public */
+  images?: string[];
 };
 
 export type CatalogProject = {
@@ -15,9 +19,102 @@ export type CatalogProject = {
   tagline: string;
   cover: string;
   screens: CatalogScreen[];
+  /** Live product URL when available */
+  url?: string;
+  /** Short brand/domain label shown in the preview chrome */
+  domain?: string;
 };
 
+/** Normalize single/multi photo fields for cards and previews. */
+export function getScreenImages(screen: CatalogScreen): string[] {
+  if (screen.images && screen.images.length > 0) return screen.images;
+  if (screen.image) return [screen.image];
+  return [];
+}
+
+/** All photos across screens — used for gallery / open validation. */
+export function getProjectImages(project: CatalogProject): string[] {
+  return project.screens.flatMap(getScreenImages);
+}
+
+export function buildQuoteHref(project: CatalogProject): string {
+  const params = new URLSearchParams({
+    projeto: project.id,
+    titulo: project.title,
+  });
+  return `/?${params.toString()}#contato`;
+}
+
 export const CATALOG_PROJECTS: CatalogProject[] = [
+  {
+    id: "thelive",
+    title: "thelive.com",
+    category: "Multistream SaaS",
+    tagline:
+      "Transmita para YouTube, Twitch, Kick, TikTok, Instagram e Kwai ao mesmo tempo — um sinal, várias plataformas.",
+    cover: "from-cyan-400/35 via-teal-500/15 to-transparent",
+    url: "https://www.thelive.com.br",
+    domain: "www.thelive.com.br",
+    screens: [
+      {
+        id: "landing",
+        label: "Landing",
+        title: "Página de aquisição",
+        description:
+          "Hero com proposta clara de multistream, CTA de trial e prova social das plataformas suportadas.",
+        accent: "#00F7FF",
+        images: ["/catalog/thelive/landing.png"],
+        stats: [
+          { label: "Trial", value: "7 dias" },
+          { label: "Plataformas", value: "6+" },
+          { label: "Sinal", value: "1 HD" },
+        ],
+        rows: [
+          "OBS Studio ou celular → um único envio",
+          "Distribuição automática para várias redes",
+          "CTA: Experimente grátis por 7 dias",
+        ],
+      },
+      {
+        id: "dashboard",
+        label: "Dashboard",
+        title: "Live Room / Global Control",
+        description:
+          "Painel ao vivo com destinos ativos, chat unificado, viewers simultâneos e alertas em tempo real.",
+        accent: "#00E5FF",
+        images: ["/catalog/thelive/dashboard.png"],
+        stats: [
+          { label: "Viewers", value: "3.902" },
+          { label: "Destinos", value: "5" },
+          { label: "Status", value: "LIVE" },
+        ],
+        rows: [
+          "YouTube · Twitch · Kick com chat ativo",
+          "Super Chat unificado entre plataformas",
+          "Alertas: follows, subs e Super Chat",
+        ],
+      },
+      {
+        id: "accounts",
+        label: "Contas",
+        title: "Gerenciar Contas",
+        description:
+          "Conexão de plataformas via OAuth real (Google/YouTube) e configuração RTMP onde a API exige.",
+        accent: "#22D3EE",
+        images: ["/catalog/thelive/contas.png"],
+        stats: [
+          { label: "OAuth", value: "YouTube" },
+          { label: "RTMP", value: "TikTok/IG" },
+          { label: "Plano", value: "PRO" },
+        ],
+        rows: [
+          "YouTube com OAuth Google",
+          "Twitch conectado (alexstorm_tv)",
+          "TikTok e Instagram via chave RTMP",
+        ],
+      },
+    ],
+  },
   {
     id: "finance-saas",
     title: "Aurora Finance",

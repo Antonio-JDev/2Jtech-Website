@@ -170,6 +170,17 @@ function AzureIcon({ className }: IconProps) {
   );
 }
 
+function CloudflareIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        fill="currentColor"
+        d="M17.9 12.2c.4-1.2 1.5-2 2.8-2 .4 0 .8.1 1.2.2l.4-1.5A4.4 4.4 0 0 0 20.7 8.5c-2 0-3.7 1.3-4.3 3.1h-.2c-2.3 0-4.1 1.8-4.1 4 0 .2 0 .5.1.7H5.5c-.5 0-1 .4-1 1s.5 1 1 1h16.2c1.2 0 2.2-1 2.2-2.2 0-1.2-1-2.1-2.2-2.1h-2.8v-.8ZM6.8 13.2h4.4c.2-.7.5-1.3.9-1.8H6.8c-1 0-1.8.5-2.1 1.4-.2.6.1 1.2.6 1.5.2.1.5.2.7.2.5 0 1-.4 1.1-.9-.1-.2-.2-.3-.3-.4Z"
+      />
+    </svg>
+  );
+}
+
 const ICONS: Record<Technology["id"], (props: IconProps) => ReactNode> = {
   react: ReactIcon,
   nextjs: NextIcon,
@@ -186,6 +197,30 @@ const ICONS: Record<Technology["id"], (props: IconProps) => ReactNode> = {
   claude: ClaudeIcon,
   aws: AwsIcon,
   azure: AzureIcon,
+  cloudflare: CloudflareIcon,
+};
+
+/** Official / widely recognized brand colors */
+export const TECH_COLORS: Record<
+  Technology["id"],
+  { icon: string; glow: string }
+> = {
+  react: { icon: "#61DAFB", glow: "rgba(97, 218, 251, 0.22)" },
+  nextjs: { icon: "#FFFFFF", glow: "rgba(255, 255, 255, 0.14)" },
+  typescript: { icon: "#3178C6", glow: "rgba(49, 120, 198, 0.25)" },
+  nodejs: { icon: "#339933", glow: "rgba(51, 153, 51, 0.22)" },
+  express: { icon: "#FFFFFF", glow: "rgba(255, 255, 255, 0.12)" },
+  nestjs: { icon: "#E0234E", glow: "rgba(224, 35, 78, 0.22)" },
+  postgresql: { icon: "#4169E1", glow: "rgba(65, 105, 225, 0.22)" },
+  docker: { icon: "#2496ED", glow: "rgba(36, 150, 237, 0.22)" },
+  linux: { icon: "#FCC624", glow: "rgba(252, 198, 36, 0.2)" },
+  github: { icon: "#FFFFFF", glow: "rgba(255, 255, 255, 0.12)" },
+  prisma: { icon: "#5A67D8", glow: "rgba(90, 103, 216, 0.22)" },
+  openai: { icon: "#10A37F", glow: "rgba(16, 163, 127, 0.22)" },
+  claude: { icon: "#D97757", glow: "rgba(217, 119, 87, 0.22)" },
+  aws: { icon: "#FF9900", glow: "rgba(255, 153, 0, 0.22)" },
+  azure: { icon: "#0078D4", glow: "rgba(0, 120, 212, 0.22)" },
+  cloudflare: { icon: "#F38020", glow: "rgba(243, 128, 32, 0.24)" },
 };
 
 export function TechIcon({
@@ -198,3 +233,4 @@ export function TechIcon({
   const Icon = ICONS[id];
   return <Icon className={className} />;
 }
+
