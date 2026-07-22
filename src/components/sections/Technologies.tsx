@@ -30,7 +30,7 @@ function TechBadge({ id, name }: Technology) {
           background: "var(--tech-glow)",
         }}
       >
-        <TechIcon id={id} className="h-[18px] w-[18px]" />
+        <TechIcon id={id} className="h-5 w-5 object-contain" />
       </span>
       <span className="pr-1 text-sm font-medium tracking-wide text-white">
         {name}
@@ -78,9 +78,10 @@ function TechMarqueeRow({
 
 export function Technologies() {
   const [paused, setPaused] = useState(false);
-  const mid = Math.ceil(TECHNOLOGIES.length / 2);
-  const rowA = TECHNOLOGIES.slice(0, mid);
-  const rowB = TECHNOLOGIES.slice(mid);
+  const third = Math.ceil(TECHNOLOGIES.length / 3);
+  const rowA = TECHNOLOGIES.slice(0, third);
+  const rowB = TECHNOLOGIES.slice(third, third * 2);
+  const rowC = TECHNOLOGIES.slice(third * 2);
 
   return (
     <section
@@ -111,13 +112,19 @@ export function Technologies() {
           items={rowA}
           direction="left"
           paused={paused}
-          duration={42}
+          duration={48}
         />
         <TechMarqueeRow
           items={rowB}
           direction="right"
           paused={paused}
-          duration={48}
+          duration={54}
+        />
+        <TechMarqueeRow
+          items={rowC}
+          direction="left"
+          paused={paused}
+          duration={60}
         />
       </div>
     </section>
