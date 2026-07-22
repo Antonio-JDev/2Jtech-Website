@@ -74,8 +74,8 @@ export function Footer() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Contato</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/90">
             <li>
-              <a href="mailto:contato@2jtech.com.br" className="transition hover:text-neon">
-                contato@2jtech.com.br
+              <a href="mailto:contato@2jtech.net" className="transition hover:text-neon">
+                contato@2jtech.net
               </a>
             </li>
             <li>Brasil</li>

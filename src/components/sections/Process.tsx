@@ -18,7 +18,7 @@ export function Process() {
           />
         </Reveal>
 
-        <FitScrollGrid className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <FitScrollGrid pinEntrance className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {PROCESS_STEPS.map((step) => (
             <article
               key={step.step}

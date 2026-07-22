@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import * as React from "react";
 import { useReducedMotion } from "framer-motion";
 import { Eye } from "lucide-react";
 import {
@@ -12,6 +12,7 @@ import { ProjectPreviewModal } from "@/components/sections/ProjectPreviewModal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/lib/reveal";
 
+const { useCallback, useEffect, useRef, useState } = React;
 function CatalogCard({
   project,
   onOpen,
@@ -32,9 +33,9 @@ function CatalogCard({
       type="button"
       onClick={() => onOpen(project)}
       aria-label={`Abrir projeto ${project.title}`}
-      className="group relative w-[280px] shrink-0 snap-center overflow-hidden rounded-[22px] border border-white/12 bg-[#0c0c0c]/90 text-left shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition duration-300 hover:border-neon/40 hover:shadow-[0_20px_60px_rgba(0,239,252,0.12)] sm:w-[320px]"
+      className="group relative w-70 shrink-0 snap-center overflow-hidden rounded-[22px] border border-white/12 bg-[#0c0c0c]/90 text-left shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition duration-300 hover:border-neon/40 hover:shadow-[0_20px_60px_rgba(0,239,252,0.12)] sm:w-80"
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.cover}`} />
+      <div className={`absolute inset-0 bg-linear-to-br ${project.cover}`} />
       <div className="relative p-4">
         <div className="mb-3 flex items-center justify-between gap-2">
           <span className="rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/90">
@@ -49,7 +50,7 @@ function CatalogCard({
           </span>
         </div>
 
-        <div className="overflow-hidden rounded-[16px] border border-white/10 bg-[#080808]">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#080808]">
           <div className="flex items-center gap-1.5 border-b border-white/8 px-3 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-red-400/80" />
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400/80" />
@@ -59,14 +60,16 @@ function CatalogCard({
             </span>
           </div>
           {previewImage ? (
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#050505]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={previewImage}
-                alt={`${project.title} — ${screen?.label ?? "preview"}`}
-                className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-70" />
+            <div className="relative aspect-16/10 overflow-hidden bg-background">
+              <div className="h-full w-full transition duration-500 group-hover:scale-[1.03]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={previewImage}
+                  alt={`${project.title} — ${screen?.label ?? "preview"}`}
+                  className={`h-full w-full object-cover object-top ${project.thumbnailClassName ?? ""}`}
+                />
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#080808] via-transparent to-transparent opacity-70" />
             </div>
           ) : (
             <div className="space-y-2 p-3">
@@ -74,7 +77,7 @@ function CatalogCard({
                 {(screen?.stats ?? []).map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-[10px] border border-white/8 bg-white/[0.03] p-2"
+                    className="rounded-[10px] border border-white/8 bg-white/3 p-2"
                   >
                     <p className="text-[8px] text-white/50">{stat.label}</p>
                     <p className="mt-0.5 text-[11px] font-semibold text-white">
@@ -93,7 +96,7 @@ function CatalogCard({
                 {(screen?.rows ?? []).slice(0, 2).map((row) => (
                   <div
                     key={row}
-                    className="truncate rounded-[8px] border border-white/6 bg-white/[0.02] px-2 py-1.5 text-[9px] text-white/85"
+                    className="truncate rounded-lg border border-white/6 bg-white/2 px-2 py-1.5 text-[9px] text-white/85"
                   >
                     {row}
                   </div>
@@ -229,7 +232,7 @@ export function CatalogCarousel() {
     return () => el.removeEventListener("wheel", onWheel);
   }, [nudge, scheduleResume]);
 
-  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0) return;
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
 
@@ -243,7 +246,7 @@ export function CatalogCarousel() {
     // Do NOT capture yet — capture blocks the card click.
   };
 
-  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (pointerIdRef.current !== e.pointerId) return;
 
     const dx = e.clientX - startXRef.current;
@@ -263,7 +266,7 @@ export function CatalogCarousel() {
     }
   };
 
-  const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (pointerIdRef.current !== e.pointerId) return;
 
     const wasDragging = movedRef.current;
@@ -311,8 +314,8 @@ export function CatalogCarousel() {
       </div>
 
       <div className="relative mt-4">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#050505] to-transparent sm:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#050505] to-transparent sm:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-background to-transparent sm:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-background to-transparent sm:w-24" />
 
         <div
           ref={viewportRef}

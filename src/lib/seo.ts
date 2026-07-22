@@ -1,7 +1,7 @@
 export const SITE_URL = "https://www.2jtech.net";
 export const SITE_NAME = "2J Tech";
 export const SITE_LEGAL_NAME = "2J Tech Softwares, Consultoria & Gestão";
-export const SITE_EMAIL = "contato@2jtech.com.br";
+export const SITE_EMAIL = "contato@2jtech.net";
 
 export const SITE_TITLE =
   "2J Tech | Empresa de Software, Sistemas e Desenvolvimento Sob Medida";

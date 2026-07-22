@@ -33,7 +33,7 @@ export function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 md:px-8">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 md:px-8">
         <Link href="#home" className="relative z-10 flex items-center gap-3" aria-label="2J Tech Home">
           <Image
             src="/sigla-2j.png"
@@ -53,7 +53,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-white/90 transition-colors hover:text-white"
+              className="text-sm text-white/90 transition-colors hover:text-neon"
             >
               {link.label}
             </Link>
@@ -84,7 +84,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base text-white/90 transition-colors hover:text-white"
+                className="text-base text-white/90 transition-colors hover:text-neon"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

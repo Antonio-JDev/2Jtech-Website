@@ -106,9 +106,9 @@ export function Contact() {
                   Ou escreva para{" "}
                   <a
                     className="text-white underline-offset-2 hover:underline"
-                    href="mailto:contato@2jtech.com.br"
+                    href="mailto:contato@2jtech.net"
                   >
-                    contato@2jtech.com.br
+                    contato@2jtech.net
                   </a>
                 </p>
               )}
