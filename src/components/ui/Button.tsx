@@ -14,10 +14,10 @@ type ButtonProps = {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-neon text-[#050505] hover:brightness-110 glow-neon shadow-[0_0_28px_rgba(0,239,252,0.22)]",
+    "bg-accent text-[#061018] hover:bg-[#38dcf4] shadow-[0_4px_20px_rgba(34,211,238,0.18)]",
   secondary:
-    "glass text-white hover:border-neon/40 hover:bg-white/[0.06]",
-  ghost: "bg-transparent text-muted hover:text-white",
+    "border border-white/15 bg-white/[0.04] text-foreground hover:border-white/30 hover:bg-white/[0.08]",
+  ghost: "bg-transparent text-muted hover:text-foreground",
 };
 
 export function Button({
@@ -30,8 +30,9 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = [
-    "inline-flex items-center justify-center gap-2 rounded-[18px] px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "inline-flex cursor-pointer items-center justify-center gap-2 rounded-[12px] px-5 py-3 text-sm font-semibold tracking-wide transition-colors duration-200",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "disabled:cursor-not-allowed disabled:opacity-50",
     variants[variant],
     className,
   ].join(" ");

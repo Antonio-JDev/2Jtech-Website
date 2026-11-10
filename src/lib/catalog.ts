@@ -6,9 +6,6 @@ export type CatalogScreen = {
   accent: string;
   stats: { label: string; value: string }[];
   rows: string[];
-  /** @deprecated Prefer `images` — kept for single-shot screenshots */
-  image?: string;
-  /** One or more real screenshots under /public */
   images?: string[];
 };
 
@@ -16,25 +13,21 @@ export type CatalogProject = {
   id: string;
   title: string;
   category: string;
+  sector: string;
   tagline: string;
-  cover: string;
+  challenge: string;
+  solution: string;
+  stack: string[];
   screens: CatalogScreen[];
-  /** Live product URL when available */
   url?: string;
-  /** Short brand/domain label shown in the preview chrome */
   domain?: string;
-  /** Extra classes for carousel thumbnail (object-position / scale) */
   thumbnailClassName?: string;
 };
 
-/** Normalize single/multi photo fields for cards and previews. */
 export function getScreenImages(screen: CatalogScreen): string[] {
-  if (screen.images && screen.images.length > 0) return screen.images;
-  if (screen.image) return [screen.image];
-  return [];
+  return screen.images ?? [];
 }
 
-/** All photos across screens — used for gallery / open validation. */
 export function getProjectImages(project: CatalogProject): string[] {
   return project.screens.flatMap(getScreenImages);
 }
@@ -49,219 +42,228 @@ export function buildQuoteHref(project: CatalogProject): string {
 
 export const CATALOG_PROJECTS: CatalogProject[] = [
   {
-    id: "thelive",
-    title: "thelive.com",
-    category: "Multistream SaaS",
-    tagline:
-      "Transmita para YouTube, Twitch, Kick, TikTok, Instagram e Kwai ao mesmo tempo — um sinal, várias plataformas.",
-    cover: "from-cyan-400/35 via-teal-500/15 to-transparent",
-    url: "https://www.thelive.com.br",
-    domain: "www.thelive.com.br",
-    screens: [
-      {
-        id: "landing",
-        label: "Landing",
-        title: "Página de aquisição",
-        description:
-          "Hero com proposta clara de multistream, CTA de trial e prova social das plataformas suportadas.",
-        accent: "#00F7FF",
-        images: ["/catalog/thelive/landing.png"],
-        stats: [
-          { label: "Trial", value: "7 dias" },
-          { label: "Plataformas", value: "6+" },
-          { label: "Sinal", value: "1 HD" },
-        ],
-        rows: [
-          "OBS Studio ou celular → um único envio",
-          "Distribuição automática para várias redes",
-          "CTA: Experimente grátis por 7 dias",
-        ],
-      },
-      {
-        id: "dashboard",
-        label: "Dashboard",
-        title: "Live Room / Global Control",
-        description:
-          "Painel ao vivo com destinos ativos, chat unificado, viewers simultâneos e alertas em tempo real.",
-        accent: "#00E5FF",
-        images: ["/catalog/thelive/dashboard.png"],
-        stats: [
-          { label: "Viewers", value: "3.902" },
-          { label: "Destinos", value: "5" },
-          { label: "Status", value: "LIVE" },
-        ],
-        rows: [
-          "YouTube · Twitch · Kick com chat ativo",
-          "Super Chat unificado entre plataformas",
-          "Alertas: follows, subs e Super Chat",
-        ],
-      },
-      {
-        id: "accounts",
-        label: "Contas",
-        title: "Gerenciar Contas",
-        description:
-          "Conexão de plataformas via OAuth real (Google/YouTube) e configuração RTMP onde a API exige.",
-        accent: "#22D3EE",
-        images: ["/catalog/thelive/contas.png"],
-        stats: [
-          { label: "OAuth", value: "YouTube" },
-          { label: "RTMP", value: "TikTok/IG" },
-          { label: "Plano", value: "PRO" },
-        ],
-        rows: [
-          "YouTube com OAuth Google",
-          "Twitch conectado (alexstorm_tv)",
-          "TikTok e Instagram via chave RTMP",
-        ],
-      },
-    ],
-  },
-  {
     id: "pd-finance",
     title: "PD Finance",
-    category: "Gestão Financeira",
+    category: "Sistema Corporativo",
+    sector: "Construção Civil & Gestão",
     tagline:
-      "Painel de gestão financeira para obras e equipes — saldo, lançamentos, medições e relatórios em um só lugar.",
-    cover: "from-orange-500/30 via-amber-500/10 to-transparent",
-    domain: "PD Finance · Gestão",
-    // Dashboard UI is darker/sparser than landing shots — slight zoom matches thelive fill.
-    thumbnailClassName: "scale-[1.22] origin-top object-[center_top]",
+      "Plataforma de gestão financeira para obras e equipes — fluxo de caixa, medições por m², folha e relatórios comparativos.",
+    challenge:
+      "Centralizar o controle financeiro de múltiplas obras simultâneas, fechamentos de diária/produção por colaborador e previsões de caixa antes dispersos em controles manuais.",
+    solution:
+      "Desenvolvimento de sistema web sob medida com visão consolidada da empresa, contas a pagar e receber, calendário de provisionamento, gestão de equipes/medições e exportação de relatórios em PDF.",
+    stack: ["Plataforma Web", "Gestão Financeira", "Medições & Folha", "Relatórios PDF"],
+    domain: "PD Finance · Sistema Interno",
+    thumbnailClassName: "scale-[1.12] origin-top object-[center_top]",
     screens: [
       {
         id: "dashboard",
-        label: "Dashboard",
-        title: "Visão Empresa",
+        label: "Visão Empresa",
+        title: "Painel executivo e fluxo de caixa",
         description:
-          "Saldo da empresa, fluxo de caixa mensal, pró-labore e histórico recente de movimentações.",
-        accent: "#FF6B00",
+          "Saldo consolidado, movimentação mensal, pró-labore e histórico de recebimentos e retiradas por obra.",
+        accent: "#22D3EE",
         images: ["/catalog/pd-financy/dasboard.png"],
         stats: [
-          { label: "Saldo", value: "R$ 63,5k" },
-          { label: "Pró-labore", value: "R$ 8,5k" },
-          { label: "Fluxo", value: "Mensal" },
+          { label: "Módulo", value: "Visão Caixa" },
+          { label: "Escopo", value: "Multiobras" },
+          { label: "Visão", value: "Mensal" },
         ],
         rows: [
-          "Transferir e pagar direto do painel",
-          "Fluxo de caixa com destaque no mês atual",
-          "Histórico de medições, recebimentos e retiradas",
+          "Consolidado financeiro com fluxo de caixa por competência",
+          "Acompanhamento de pró-labore e movimentações recentes",
+          "Ações rápidas de pagamento e transferência",
         ],
       },
       {
         id: "financeiro",
         label: "Financeiro",
-        title: "Contas a pagar e receber",
+        title: "Contas a pagar e a receber",
         description:
-          "Lançamentos com filtros por fluxo e vencimento, quitação rápida e conciliação de obras.",
-        accent: "#F97316",
+          "Lançamentos filtrados por vencimento e situação, conciliação por obra e quitação ágil.",
+        accent: "#38BDF8",
         images: ["/catalog/pd-financy/financeiro.png"],
         stats: [
-          { label: "A receber", value: "R$ 5,5k" },
-          { label: "A pagar", value: "R$ 3,2k" },
-          { label: "Recebido/mês", value: "R$ 26,5k" },
+          { label: "Filtros", value: "Fluxo / Data" },
+          { label: "Status", value: "Baixa rápida" },
+          { label: "Vínculo", value: "Por obra" },
         ],
         rows: [
-          "Filtros: Todos · A Receber · A Pagar",
-          "Status: Pagas, a vencer e vencidas",
-          "Novo lançamento e conta a pagar em um clique",
+          "Separação clara entre títulos a receber, a pagar e quitados",
+          "Controle de vencimentos e alertas de pendências",
+          "Registro de lançamentos vinculado a centros de custo",
         ],
       },
       {
         id: "previsoes",
         label: "Previsões",
-        title: "Previsionamento financeiro",
+        title: "Calendário de provisionamento",
         description:
-          "Calendário mensal com entradas e gastos previstos nos lançamentos pendentes, saldo do dia e detalhe por data.",
-        accent: "#FB923C",
+          "Visão mensal de entradas e saídas previstas com detalhamento diário por parcela e cliente.",
+        accent: "#38BDF8",
         images: ["/catalog/pd-financy/calendario-de-previsoes.png"],
         stats: [
-          { label: "Entradas", value: "R$ 5,5k" },
-          { label: "Gastos", value: "R$ 3,2k" },
-          { label: "Saldo prev.", value: "R$ 2,3k" },
+          { label: "Projeção", value: "Diária" },
+          { label: "Visão", value: "Calendário" },
+          { label: "Detalhe", value: "Por parcela" },
         ],
         rows: [
-          "Visão mensal com totais de entradas e gastos",
-          "Dias com lançamentos destacados no calendário",
-          "Detalhe do dia: parcela, cliente e saldo",
+          "Previsão consolidada de entradas, gastos e saldo do período",
+          "Destaque visual para dias com vencimentos programados",
+          "Detalhamento por cliente e parcela ao selecionar a data",
         ],
       },
       {
         id: "projetos",
-        label: "Projetos",
-        title: "Projetos & Obras Ativas",
+        label: "Obras",
+        title: "Projetos e obras ativas",
         description:
-          "Obras com progresso físico, parcelas negociadas e status de execução em cards.",
-        accent: "#FB923C",
+          "Acompanhamento de contratos, parcelas negociadas e evolução física de cada obra.",
+        accent: "#22D3EE",
         images: ["/catalog/pd-financy/projetos.png"],
         stats: [
-          { label: "Obras", value: "Ativas" },
-          { label: "Parcelas", value: "Negociadas" },
-          { label: "Progresso", value: "Físico %" },
+          { label: "Contratos", value: "Rastreáveis" },
+          { label: "Avanço", value: "Físico %" },
+          { label: "Busca", value: "Obra / Cidade" },
         ],
         rows: [
-          "Busca por obra, cliente ou cidade",
-          "Valor por parcela e total negociado",
-          "Status: Executando · Aprovado",
+          "Filtro por obra, cliente ou cidade atendida",
+          "Controle de valor negociado e andamento das parcelas",
+          "Indicadores de status operacional por projeto",
         ],
       },
       {
         id: "equipe",
         label: "Equipe",
-        title: "Equipe & Medições",
+        title: "Equipe e medições em campo",
         description:
-          "Colaboradores, fichas de fechamento de diária/produção e geração de conta a pagar.",
-        accent: "#EA580C",
+          "Cadastro de colaboradores, fechamento por diária ou produção em m² e integração com contas a pagar.",
+        accent: "#22D3EE",
         images: ["/catalog/pd-financy/equipe.png"],
         stats: [
-          { label: "Regime", value: "CLT / Diária" },
-          { label: "Medições", value: "Por m²" },
-          { label: "Vales", value: "PIX" },
+          { label: "Regimes", value: "CLT / Diária" },
+          { label: "Medição", value: "Por m²" },
+          { label: "Geração", value: "Automática" },
         ],
         rows: [
-          "Lista de colaboradores com busca",
-          "Itens de medição com subtotal automático",
-          "Resumo consolidado e gerar conta a pagar",
+          "Fichas de fechamento com subtotal automático por item medido",
+          "Controle de vales e adiantamentos",
+          "Conversão direta do fechamento em conta a pagar",
         ],
       },
       {
         id: "folha",
         label: "Folha",
-        title: "Folha de fechamento",
+        title: "Folha de fechamento individual",
         description:
-          "Detalhamento da folha do colaborador com itens lançados, vales e valor líquido a pagar.",
-        accent: "#C2410C",
+          "Detalhamento transparente de produção, descontos e valor líquido por colaborador.",
+        accent: "#38BDF8",
         images: ["/catalog/pd-financy/folha-funcionario.png"],
         stats: [
-          { label: "Produção", value: "R$ 3,3k" },
-          { label: "Vales", value: "R$ 0" },
-          { label: "Líquido", value: "R$ 3,3k" },
+          { label: "Cálculo", value: "Líquido" },
+          { label: "Itens", value: "Auditáveis" },
+          { label: "Base", value: "Função/Diária" },
         ],
         rows: [
-          "Cargo, regime e custo base da diária",
-          "Itens lançados com unidade e subtotal",
-          "Resumo com valor líquido a pagar",
+          "Memória de cálculo com função, regime e custo base",
+          "Listagem detalhada de unidades executadas e subtotais",
+          "Fechamento líquido pronto para aprovação",
         ],
       },
       {
         id: "relatorio",
-        label: "Relatório",
-        title: "Relatório financeiro",
+        label: "Relatórios",
+        title: "Relatórios financeiros e comparativos",
         description:
-          "Filtros por período, tipo de pagamento e classificações — despesas, receitas ou comparativo.",
-        accent: "#FF6B00",
+          "Análise de receitas, despesas e resultado por período, forma de pagamento e categoria com exportação em PDF.",
+        accent: "#22D3EE",
         images: [
           "/catalog/pd-financy/relatorio.png",
           "/catalog/pd-financy/relatorio-comparativo.png",
         ],
         stats: [
-          { label: "Despesas", value: "R$ 45,5k" },
-          { label: "Receitas", value: "R$ 82,4k" },
-          { label: "Saldo", value: "R$ 36,9k" },
+          { label: "Períodos", value: "1 a 12 meses" },
+          { label: "Exportação", value: "PDF" },
+          { label: "Análise", value: "Comparativa" },
         ],
         rows: [
-          "Atalhos de 1 a 12 meses",
-          "Exportar PDF do relatório",
-          "Comparativo com gráfico e insights",
+          "Filtros avançados por classificação e método de pagamento",
+          "Comparativo visual entre períodos e categorias",
+          "Exportação direta em PDF para prestação de contas",
+        ],
+      },
+    ],
+  },
+  {
+    id: "thelive",
+    title: "thelive.com",
+    category: "Plataforma SaaS",
+    sector: "Mídia & Transmissão Ao Vivo",
+    tagline:
+      "Plataforma SaaS de multistream para distribuir uma transmissão única simultaneamente para múltiplas redes sociais.",
+    challenge:
+      "Permitir que criadores e estúdios enviem apenas um sinal de vídeo e gerenciem destinos, autenticações OAuth/RTMP, chat e alertas em uma sala única.",
+    solution:
+      "Arquitetura web com autenticação OAuth oficial (Google/YouTube), gestão de chaves RTMP, painel de controle ao vivo e agregação de eventos em tempo real.",
+    stack: ["SaaS Multi-destino", "OAuth 2.0", "RTMP", "Painel Tempo Real"],
+    url: "https://www.thelive.com.br",
+    domain: "www.thelive.com.br",
+    screens: [
+      {
+        id: "landing",
+        label: "Aquisição",
+        title: "Página de aquisição e posicionamento",
+        description:
+          "Apresentação clara da proposta de multistream, plataformas suportadas e fluxo de entrada para teste.",
+        accent: "#22D3EE",
+        images: ["/catalog/thelive/landing.png"],
+        stats: [
+          { label: "Entrada", value: "1 sinal HD" },
+          { label: "Canais", value: "6+ redes" },
+          { label: "Modelo", value: "SaaS" },
+        ],
+        rows: [
+          "Integração direta a partir de OBS Studio ou dispositivo móvel",
+          "Distribuição simultânea para YouTube, Twitch, Kick, TikTok, Instagram e Kwai",
+          "Jornada de onboarding objetiva para novos assinantes",
+        ],
+      },
+      {
+        id: "dashboard",
+        label: "Live Room",
+        title: "Painel de controle ao vivo",
+        description:
+          "Monitoramento centralizado de destinos ativos, audiência simultânea, chat unificado e alertas.",
+        accent: "#38BDF8",
+        images: ["/catalog/thelive/dashboard.png"],
+        stats: [
+          { label: "Operação", value: "Ao vivo" },
+          { label: "Chat", value: "Unificado" },
+          { label: "Eventos", value: "Tempo real" },
+        ],
+        rows: [
+          "Consolidação de interações e mensagens de múltiplas plataformas",
+          "Visão de status de transmissão por destino conectado",
+          "Notificações unificadas de eventos da audiência",
+        ],
+      },
+      {
+        id: "accounts",
+        label: "Integrações",
+        title: "Gestão de contas OAuth & RTMP",
+        description:
+          "Conexão segura com provedores via OAuth e configuração assistida via chaves RTMP.",
+        accent: "#22D3EE",
+        images: ["/catalog/thelive/contas.png"],
+        stats: [
+          { label: "Auth", value: "OAuth Google" },
+          { label: "Stream", value: "RTMP" },
+          { label: "Gestão", value: "Centralizada" },
+        ],
+        rows: [
+          "Fluxo OAuth integrado para YouTube e plataformas compatíveis",
+          "Suporte a chaves RTMP dedicadas por canal",
+          "Controle de assinatura e limites por plano",
         ],
       },
     ],
@@ -269,105 +271,110 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
   {
     id: "s3e-engenharia",
     title: "S3E Engenharia",
-    category: "Site Institucional",
+    category: "Presença Corporativa B2B",
+    sector: "Engenharia Elétrica",
     tagline:
-      "Site institucional de engenharia elétrica — projetos, subestações, quadros e eficiência energética com CTA de orçamento e WhatsApp.",
-    cover: "from-blue-500/30 via-sky-500/10 to-transparent",
+      "Portal institucional para empresa de engenharia elétrica com foco em credibilidade técnica, normas regulatórias e geração de orçamentos.",
+    challenge:
+      "Traduzir mais de uma década de atuação em subestações, quadros elétricos e conformidade NR-10 em uma presença digital que gere confiança para clientes industriais.",
+    solution:
+      "Estruturação de portal institucional com páginas detalhadas por serviço técnico, destaque de certificações/normas e jornada direta para solicitação de proposta.",
+    stack: ["Next.js", "SEO Técnico", "Arquitetura de Conteúdo", "Conversão B2B"],
     domain: "s3eengenharia.com.br",
     screens: [
       {
         id: "hero",
         label: "Home",
-        title: "Hero de aquisição",
+        title: "Posicionamento principal",
         description:
-          "Proposta clara de eficiência elétrica, CTAs de orçamento e WhatsApp, com hero fotográfico de campo.",
-        accent: "#2563EB",
+          "Comunicação direta de eficiência elétrica para indústria e comércio, com canais claros de orçamento.",
+        accent: "#38BDF8",
         images: ["/catalog/s3e-engenharia/secao-hero.png"],
         stats: [
-          { label: "CTA", value: "Orçamento" },
+          { label: "Foco", value: "Industrial/Com." },
+          { label: "Conversão", value: "Orçamento" },
           { label: "Canal", value: "WhatsApp" },
-          { label: "Foco", value: "Elétrica" },
         ],
         rows: [
-          "Soluções em eficiência e efetividade elétrica",
-          "Projetos, quadros, subestações e manutenções",
-          "Navbar com Serviços, Sobre e Contato",
+          "Apresentação objetiva de projetos, quadros, subestações e manutenção",
+          "Navegação estruturada entre serviços técnicos e histórico da empresa",
+          "CTAs diretos para contato comercial",
         ],
       },
       {
         id: "diferenciais",
-        label: "Diferenciais",
-        title: "Por que escolher a S3E?",
+        label: "Autoridade",
+        title: "Pilares técnicos e conformidade",
         description:
-          "Seção de autoridade com +15 anos de experiência, segurança NR e soluções personalizadas.",
-        accent: "#3B82F6",
+          "Destaque para experiência acumulada, normas NR-10 / NBR-5410 e atendimento pós-obra.",
+        accent: "#38BDF8",
         images: ["/catalog/s3e-engenharia/what-s3e.png"],
         stats: [
-          { label: "Experiência", value: "+15 anos" },
-          { label: "Normas", value: "NR-10" },
+          { label: "Normas", value: "NR-10 / NBR" },
           { label: "Escopo", value: "Sob medida" },
+          { label: "Pós-venda", value: "Dedicado" },
         ],
         rows: [
-          "Experiência e qualidade certificada",
-          "Segurança em primeiro lugar (NR-10 / NBR-5410)",
-          "Compromisso e pós-venda com o cliente",
+          "Reforço de segurança operacional e conformidade normativa",
+          "Comunicação clara para tomada de decisão técnica",
+          "Alinhamento visual com a identidade de engenharia",
         ],
       },
       {
         id: "servicos-home",
-        label: "Serviços",
-        title: "Serviços especializados",
+        label: "Catálogo Técnico",
+        title: "Portfólio de serviços elétricos",
         description:
-          "Grade de serviços com fotos reais — capacitores, manutenção, fotovoltaica, quadros e subestação.",
-        accent: "#60A5FA",
+          "Organização visual de frentes como banco de capacitores, fotovoltaica, quadros e subestações.",
+        accent: "#22D3EE",
         images: ["/catalog/s3e-engenharia/services-home.png"],
         stats: [
-          { label: "Serviços", value: "8+" },
-          { label: "CTA", value: "Ver todos" },
-          { label: "Diferenciais", value: "4" },
+          { label: "Frentes", value: "8+ serviços" },
+          { label: "Registro", value: "Fotos reais" },
+          { label: "Navegação", value: "Modular" },
         ],
         rows: [
-          "Banco de capacitores e eficiência energética",
-          "Quadros de comando e medição",
-          "Subestação aérea até 300kVA",
+          "Estrutura escaneável para serviços de média e baixa tensão",
+          "Material visual com obras e instalações reais",
+          "Direcionamento para páginas de detalhamento técnico",
         ],
       },
       {
         id: "servicos-detalhe",
-        label: "Detalhe",
-        title: "Subestação aérea até 300kVA",
+        label: "Detalhamento",
+        title: "Página técnica — Subestação até 300kVA",
         description:
-          "Página de serviço com checklist técnico, vantagens e foto de instalação real.",
-        accent: "#1D4ED8",
+          "Detalhamento de especificações, proteções e escopo entre projeto e execução.",
+        accent: "#38BDF8",
         images: ["/catalog/s3e-engenharia/services.png"],
         stats: [
-          { label: "Potência", value: "300kVA" },
-          { label: "Escopo", value: "Projeto+Obra" },
-          { label: "Público", value: "R/I" },
+          { label: "Capacidade", value: "Até 300kVA" },
+          { label: "Entrega", value: "Projeto + Obra" },
+          { label: "Segmento", value: "B2B / Resid." },
         ],
         rows: [
-          "Transformadores de 15kVA a 300kVA",
-          "Proteções completas e padronização",
-          "Atalhos Residencial e Industrial",
+          "Checklist técnico de transformadores e proteções",
+          "Segmentação clara entre aplicações residenciais e industriais",
+          "Conversão contextualizada por tipo de serviço",
         ],
       },
       {
         id: "sobre",
-        label: "Sobre",
-        title: "Trajetória e institutional",
+        label: "Institucional",
+        title: "Trajetória e números da empresa",
         description:
-          "Números da empresa, história da S3E e pilares de excelência, segurança e inovação.",
-        accent: "#38BDF8",
+          "Apresentação da história, histórico de entregas e princípios de segurança e qualidade.",
+        accent: "#22D3EE",
         images: ["/catalog/s3e-engenharia/statics-about-section.png"],
         stats: [
-          { label: "Projetos", value: "+2000" },
-          { label: "Clientes", value: "+1200" },
-          { label: "Anos", value: "+12" },
+          { label: "Trajetória", value: "Consolidada" },
+          { label: "Prova", value: "Histórico real" },
+          { label: "Foco", value: "Credibilidade" },
         ],
         rows: [
-          "Trajetória em números com ícones",
-          "Sobre a S3E com foto e checklist",
-          "CTA: Conheça nossa história",
+          "Consolidação de indicadores históricos da empresa",
+          "Narrativa institucional clara e objetiva",
+          "Integração com fluxo de orçamento técnico",
         ],
       },
     ],
@@ -375,48 +382,53 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
   {
     id: "pd-gesso-drywall",
     title: "PD Gesso Drywall",
-    category: "Site Institucional",
+    category: "Presença Corporativa B2B",
+    sector: "Construção a Seco & Obras",
     tagline:
-      "Site institucional dark/orange para empreiteira de drywall e steel frame — grandes obras, portfólio e orçamento via WhatsApp.",
-    cover: "from-orange-500/30 via-amber-400/10 to-transparent",
+      "Site institucional e portfólio filtrável de grandes obras em drywall e steel frame para construtoras e empreendimentos em Santa Catarina.",
+    challenge:
+      "Posicionar uma empreiteira especializada de Itajaí/SC para contratos de grande porte (corporativos, logísticos e prediais) com portfólio visual organizado.",
+    solution:
+      "Construção de portal institucional com galeria filtrável de obras por tipologia, apresentação de soluções técnicas e captação direta de orçamentos.",
+    stack: ["Portal Institucional", "Galeria Filtrável", "UX Responsiva", "SEO Local SC"],
     domain: "pdgessodrywall.com.br",
     screens: [
       {
         id: "hero",
         label: "Home",
-        title: "Hero institucional",
+        title: "Posicionamento para grandes empreendimentos",
         description:
-          "Proposta para grandes obras e empreendimentos, com CTAs de orçamento e soluções.",
-        accent: "#FF9F00",
+          "Proposta focada em obras prediais, corporativas e residenciais de alto padrão.",
+        accent: "#38BDF8",
         images: ["/catalog/pd-gesso-drywall/hero-section.png"],
         stats: [
-          { label: "Foco", value: "Grandes obras" },
-          { label: "CTA", value: "WhatsApp" },
-          { label: "Estilo", value: "Dark" },
+          { label: "Mercado", value: "Grandes obras" },
+          { label: "Região", value: "SC + Brasil" },
+          { label: "Contato", value: "Direto" },
         ],
         rows: [
-          "Soluções em drywall para empreendimentos",
-          "Badge: prediais · residenciais · grandes obras",
-          "Navbar com Portfólio, Serviços e Orçamento",
+          "Segmentação imediata para construtoras e incorporadoras",
+          "Navegação direta para portfólio de obras e serviços",
+          "CTAs posicionados para solicitação de orçamento",
         ],
       },
       {
         id: "sobre",
-        label: "Sobre",
-        title: "Empresa e números",
+        label: "Empresa",
+        title: "Estrutura e histórico em Itajaí/SC",
         description:
-          "Prova social com métricas, base em Itajaí/SC e CTAs para conhecer a empresa ou falar com especialista.",
-        accent: "#F59E0B",
+          "Apresentação institucional com equipe própria, área de atendimento e reputação consolidada.",
+        accent: "#22D3EE",
         images: ["/catalog/pd-gesso-drywall/about-section.png"],
         stats: [
-          { label: "Anos", value: "10+" },
-          { label: "Obras", value: "500+" },
-          { label: "Google", value: "4.9" },
+          { label: "Base", value: "Itajaí / SC" },
+          { label: "Equipe", value: "Própria" },
+          { label: "Foco", value: "Padrão técnico" },
         ],
         rows: [
-          "Empreiteira de drywall e steel frame",
-          "Atendimento SC + Brasil",
-          "Equipe própria e acabamento premium",
+          "Destaque de estrutura própria de execução em obra",
+          "Apresentação de histórico e avaliações reais",
+          "Acesso direto para atendimento com especialista",
         ],
       },
       {
@@ -424,182 +436,38 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
         label: "Soluções",
         title: "Soluções em drywall e steel frame",
         description:
-          "Carrossel de soluções: compartimentação corporativa, logística e forros em grandes áreas.",
-        accent: "#FB923C",
+          "Organização das especialidades técnicas: compartimentação corporativa, centros logísticos e forros.",
+        accent: "#38BDF8",
         images: ["/catalog/pd-gesso-drywall/solutions-section.png"],
         stats: [
-          { label: "Cards", value: "Carousel" },
-          { label: "CTA", value: "Orçamento" },
-          { label: "Escopo", value: "Premium" },
+          { label: "Sistemas", value: "Drywall / Steel" },
+          { label: "Aplicação", value: "Corporativa" },
+          { label: "Jornada", value: "Orçamento" },
         ],
         rows: [
-          "Compartimentação corporativa",
-          "Centros logísticos e distribuição",
-          "Forro acartonado em grandes áreas",
+          "Detalhamento de compartimentação e fechamentos corporativos",
+          "Soluções para galpões logísticos e grandes vãos",
+          "Apresentação técnica clara para engenheiros e compradores",
         ],
       },
       {
         id: "portfolio",
         label: "Portfólio",
-        title: "Portfólio de obras",
+        title: "Galeria filtrável de empreendimentos",
         description:
-          "Galeria filtrável de obras em drywall e steel frame — prediais, residenciais e acabamento.",
-        accent: "#EA580C",
+          "Catálogo visual categorizado por tipo de obra para comprovação prática de capacidade executiva.",
+        accent: "#22D3EE",
         images: ["/catalog/pd-gesso-drywall/portfolio-page.png"],
         stats: [
-          { label: "Filtros", value: "5" },
-          { label: "Tipo", value: "Galeria" },
-          { label: "CTA", value: "Orçamento" },
+          { label: "Filtros", value: "Por categoria" },
+          { label: "Acervo", value: "Obras reais" },
+          { label: "Ação", value: "Orçamento" },
         ],
         rows: [
-          "Filtros: Grandes obras · Forros · Residencial",
-          "Registro visual de empreendimentos",
-          "Hero com CTA Solicitar Orçamento",
+          "Filtros por grandes obras, forros e projetos residenciais",
+          "Registro fotográfico de execuções entregues",
+          "Conversão integrada ao fluxo de contato comercial",
         ],
-      },
-    ],
-  },
-  {
-    id: "api-gateway",
-    title: "Vertex Gateway",
-    category: "APIs & Integrações",
-    tagline: "Gateway unificado com observabilidade total.",
-    cover: "from-amber-400/25 via-orange-500/10 to-transparent",
-    screens: [
-      {
-        id: "traffic",
-        label: "Traffic",
-        title: "Tráfego de APIs",
-        description: "Latência, erros e throughput por rota.",
-        accent: "#fbbf24",
-        stats: [
-          { label: "RPS", value: "3.2k" },
-          { label: "p95", value: "118ms" },
-          { label: "Erros", value: "0.12%" },
-        ],
-        rows: ["/v1/payments OK", "/v1/users 429 rate-limit", "Deploy canary 20%"],
-      },
-      {
-        id: "connectors",
-        label: "Connectors",
-        title: "Conectores",
-        description: "ERP, CRM e gateways de pagamento.",
-        accent: "#fb923c",
-        stats: [
-          { label: "Ativos", value: "26" },
-          { label: "Filas", value: "8" },
-          { label: "Retries", value: "14" },
-        ],
-        rows: ["SAP sync", "Salesforce push", "Pagar.me webhook"],
-      },
-      {
-        id: "security",
-        label: "Security",
-        title: "Segurança & tokens",
-        description: "Scopes, rotação e auditoria.",
-        accent: "#f59e0b",
-        stats: [
-          { label: "Tokens", value: "412" },
-          { label: "Scopes", value: "63" },
-          { label: "Audit", value: "ON" },
-        ],
-        rows: ["Key rotacionada", "IP allowlist atualizada", "OAuth client novo"],
-      },
-    ],
-  },
-  {
-    id: "retail-os",
-    title: "Lumen Retail OS",
-    category: "Varejo Digital",
-    tagline: "Catálogo, PDV e omnichannel sincronizados.",
-    cover: "from-rose-400/25 via-pink-500/10 to-transparent",
-    screens: [
-      {
-        id: "catalog",
-        label: "Catálogo",
-        title: "Catálogo omnichannel",
-        description: "Produtos, preços e disponibilidade.",
-        accent: "#fb7185",
-        stats: [
-          { label: "SKUs", value: "9.4k" },
-          { label: "Canais", value: "7" },
-          { label: "Sync", value: "Live" },
-        ],
-        rows: ["Preço promo flash", "Stock marketplace", "Coleção inverno"],
-      },
-      {
-        id: "pos",
-        label: "PDV",
-        title: "Ponto de venda",
-        description: "Checkout rápido com antifraude.",
-        accent: "#f43f5e",
-        stats: [
-          { label: "Vendas", value: "1.1k" },
-          { label: "Ticket", value: "R$ 216" },
-          { label: "Tempo médio", value: "41s" },
-        ],
-        rows: ["Loja Centro", "PIX confirmado", "Troca #221"],
-      },
-      {
-        id: "crm",
-        label: "CRM",
-        title: "Clientes & loyalty",
-        description: "Segmentos, campanhas e retenção.",
-        accent: "#e11d48",
-        stats: [
-          { label: "Base", value: "88k" },
-          { label: "NPS", value: "72" },
-          { label: "Ativos", value: "61%" },
-        ],
-        rows: ["Campanha VIP", "Cupom aniversário", "Segmento churn risk"],
-      },
-    ],
-  },
-  {
-    id: "clinic-flow",
-    title: "Orbit Clinic",
-    category: "Healthtech",
-    tagline: "Agendamentos, prontuário e faturamento clínico.",
-    cover: "from-blue-400/25 via-indigo-500/10 to-transparent",
-    screens: [
-      {
-        id: "agenda",
-        label: "Agenda",
-        title: "Agenda inteligente",
-        description: "Slots, confirmações e no-show.",
-        accent: "#60a5fa",
-        stats: [
-          { label: "Hoje", value: "64" },
-          { label: "Confirmados", value: "91%" },
-          { label: "No-show", value: "3%" },
-        ],
-        rows: ["Dr. Lima 14:00", "WhatsApp confirmado", "Encaixe urgente"],
-      },
-      {
-        id: "records",
-        label: "Prontuário",
-        title: "Prontuário eletrônico",
-        description: "Histórico seguro e compartilhado.",
-        accent: "#818cf8",
-        stats: [
-          { label: "Pacientes", value: "12.6k" },
-          { label: "Anexos", value: "48k" },
-          { label: "LGPD", value: "OK" },
-        ],
-        rows: ["Laudo anexado", "Prescrição digital", "Encaminhamento"],
-      },
-      {
-        id: "billing-clinic",
-        label: "Faturamento",
-        title: "Faturamento clínico",
-        description: "Convênios, glosas e repasses.",
-        accent: "#6366f1",
-        stats: [
-          { label: "Guias", value: "220" },
-          { label: "Glosas", value: "2.1%" },
-          { label: "Repasse", value: "R$ 96k" },
-        ],
-        rows: ["Lote Unimed", "NF-e emitida", "Auditoria interna"],
       },
     ],
   },

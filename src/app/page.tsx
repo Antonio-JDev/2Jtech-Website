@@ -1,36 +1,31 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { CatalogCarousel } from "@/components/sections/CatalogCarousel";
 import { Services } from "@/components/sections/Services";
-import { Process } from "@/components/sections/Process";
+import { CaseStudies } from "@/components/sections/CaseStudies";
+import { Governance } from "@/components/sections/Governance";
 import { Technologies } from "@/components/sections/Technologies";
-import { Projects } from "@/components/sections/Projects";
-import { Differentials } from "@/components/sections/Differentials";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { About } from "@/components/sections/About";
 import { CTA } from "@/components/sections/CTA";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { BackToTop } from "@/components/BackToTop";
-import KineticGrid from "@/components/ui/kinetic-grid";
 
 export default function HomePage() {
   return (
-    <KineticGrid className="overflow-x-clip">
+    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Header />
       <main>
         <Hero />
-        <CatalogCarousel />
         <Services />
-        <Process />
+        <CaseStudies />
+        <Governance />
         <Technologies />
-        <Projects />
-        <Differentials />
-        <Testimonials />
+        <About />
         <CTA />
         <Contact />
       </main>
       <Footer />
       <BackToTop />
-    </KineticGrid>
+    </div>
   );
 }

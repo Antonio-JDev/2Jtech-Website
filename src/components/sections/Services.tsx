@@ -1,70 +1,65 @@
 "use client";
 
-import {
-  Bot,
-  Boxes,
-  BriefcaseBusiness,
-  Code2,
-  FolderKanban,
-  LayoutTemplate,
-  Network,
-  ServerCog,
-  Sparkles,
-  Workflow,
-} from "lucide-react";
-import { SERVICES } from "@/lib/content";
+import { Bot, Boxes, BriefcaseBusiness, Network } from "lucide-react";
+import { PRACTICE_AREAS } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/lib/reveal";
-import { FitScrollGrid } from "@/lib/fit-scroll";
 
-const ICONS = [
-  Code2,
-  ServerCog,
-  Boxes,
-  LayoutTemplate,
-  Network,
-  Workflow,
-  Bot,
-  Sparkles,
-  BriefcaseBusiness,
-  FolderKanban,
-];
+const ICONS = [Boxes, Network, Bot, BriefcaseBusiness];
 
 export function Services() {
   return (
-    <section id="servicos" className="section-padding relative overflow-x-hidden">
+    <section
+      id="solucoes"
+      className="section-padding border-b border-white/[0.06]"
+    >
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
-            eyebrow="Serviços"
-            title="Soluções digitais de alto padrão"
-            description="Do conceito à produção: desenvolvemos, integramos e gerimos sistemas que elevam a operação da sua empresa."
+            eyebrow="Áreas de Prática"
+            title="Soluções desenhadas para a realidade da operação"
+            description="Criamos sistemas, plataformas, integrações e consultoria tecnológica sob medida — unindo visão de negócio e engenharia de software para entregas sustentáveis."
           />
         </Reveal>
 
-        <FitScrollGrid
-          variant="tall"
-          pinEntrance
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
-        >
-          {SERVICES.map((service, index) => {
-            const Icon = ICONS[index] ?? Code2;
+        <div className="grid gap-5 md:grid-cols-2">
+          {PRACTICE_AREAS.map((area, index) => {
+            const Icon = ICONS[index] ?? Boxes;
             return (
-              <article
-                key={service.title}
-                className="group glass h-full rounded-[18px] p-5 transition-all duration-300 hover:border-neon/30 hover:bg-white/[0.05] hover:glow-neon-soft"
-              >
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-[12px] border border-white/10 bg-white/[0.03] text-neon transition-colors group-hover:border-neon/40">
-                  <Icon size={18} />
-                </div>
-                <h3 className="text-base font-semibold text-white">{service.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/95">
-                  {service.description}
-                </p>
-              </article>
+              <Reveal key={area.code} delay={index * 0.03}>
+                <article className="panel flex h-full flex-col rounded-[16px] p-6 transition-colors duration-200 hover:border-white/20 sm:p-7">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-[12px] border border-accent/30 bg-accent/10 text-accent">
+                      <Icon size={20} />
+                    </div>
+                    <span className="text-xs font-semibold tracking-[0.18em] text-muted">
+                      {area.code}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-xl font-semibold text-foreground">
+                    {area.title}
+                  </h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-[#cbd5e1]">
+                    {area.summary}
+                  </p>
+
+                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5">
+                    {area.deliverables.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm text-foreground/90"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </Reveal>
             );
           })}
-        </FitScrollGrid>
+        </div>
       </div>
     </section>
   );

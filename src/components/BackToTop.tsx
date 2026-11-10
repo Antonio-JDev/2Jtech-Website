@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
-const SHOW_AFTER_PX = 280;
+const SHOW_AFTER_PX = 360;
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -31,13 +31,13 @@ export function BackToTop() {
           type="button"
           aria-label="Voltar ao topo"
           onClick={scrollTop}
-          initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.92 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.92 }}
-          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-5 right-5 z-50 inline-flex h-12 w-12 items-center justify-center rounded-[16px] border border-neon/35 bg-neon text-[#050505] shadow-[0_0_28px_rgba(0,239,252,0.28)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-8 sm:right-8"
+          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+          className="fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-[12px] border border-white/15 bg-[#0d1117]/95 text-foreground shadow-lg backdrop-blur-md transition-colors hover:border-accent/50 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-8 sm:right-8"
         >
-          <ArrowUp size={20} strokeWidth={2.4} />
+          <ArrowUp size={18} strokeWidth={2.2} />
         </motion.button>
       ) : null}
     </AnimatePresence>

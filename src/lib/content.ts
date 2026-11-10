@@ -1,228 +1,179 @@
 export const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#catalogo", label: "Catálogo" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#tecnologias", label: "Tecnologias" },
+  { href: "#solucoes", label: "Soluções" },
+  { href: "#cases", label: "Cases" },
+  { href: "#governanca", label: "Governança" },
+  { href: "#tecnologia", label: "Tecnologia" },
   { href: "#sobre", label: "Sobre" },
-  { href: "#contato", label: "Contato" },
 ] as const;
 
-export const BENEFITS = [
-  "Desenvolvimento Sob Medida",
-  "Inteligência Artificial",
-  "APIs & Integrações",
-  "Consultoria Tecnológica",
-] as const;
-
-export const HERO_STATS = [
-  { value: "+30", label: "Projetos" },
-  { value: "100%", label: "Código Próprio" },
-  { value: "24/7", label: "Suporte Especializado" },
-  { value: "∞", label: "Arquitetura Escalável" },
-] as const;
-
-export const CLIENTS = [
-  "Nexus",
-  "Aurora",
-  "Vertex",
-  "Pulse",
-  "Orbit",
-  "Lumen",
-] as const;
-
-export const SERVICES = [
+export const PRACTICE_AREAS = [
   {
-    title: "Desenvolvimento Web",
-    description:
-      "Aplicações web modernas, rápidas e preparadas para escalar com o seu negócio.",
+    code: "01",
+    title: "Sistemas Corporativos & Plataformas Web",
+    summary:
+      "Softwares desenhados especificamente para a regra de negócio da sua empresa, substituindo planilhas críticas e sistemas engessados.",
+    deliverables: [
+      "ERPs internos, gestão financeira, obras, equipes e medições",
+      "Plataformas SaaS multiusuário com autenticação e controle de acesso",
+      "Portais administrativos, painéis executivos e relatórios em PDF",
+    ],
   },
   {
-    title: "APIs",
-    description:
-      "APIs robustas, documentadas e seguras para integrar sistemas e produtos.",
+    code: "02",
+    title: "APIs, Integrações & Arquitetura de Dados",
+    summary:
+      "Conectamos seus sistemas, bancos de dados e gateways externos com contratos bem definidos, observabilidade e tolerância a falhas.",
+    deliverables: [
+      "APIs REST e serviços backend documentados e versionados",
+      "Integrações OAuth, pagamentos, webhooks e pipelines de dados",
+      "Modelagem relacional segura, auditoria e migração de legados",
+    ],
   },
   {
-    title: "Sistemas Empresariais",
-    description:
-      "ERPs, CRMs e plataformas internas sob medida para a operação da sua empresa.",
+    code: "03",
+    title: "IA Aplicada & Automação Operacional",
+    summary:
+      "Implementação pragmática de inteligência artificial e automações para reduzir gargalos operacionais com controle e rastreabilidade.",
+    deliverables: [
+      "Assistentes internos conectados à base privada da empresa (RAG)",
+      "Servidores MCP e integração segura de ferramentas corporativas",
+      "Automação de rotinas financeiras, atendimento e fluxos internos",
+    ],
   },
   {
-    title: "Landing Pages",
-    description:
-      "Páginas de alta conversão com visual premium e performance de ponta.",
-  },
-  {
-    title: "Integrações",
-    description:
-      "Conectamos ferramentas, bancos e serviços em fluxos estáveis e monitorados.",
-  },
-  {
-    title: "MCP Servers",
-    description:
-      "Infraestrutura para agentes e ferramentas de IA com protocolos modernos.",
-  },
-  {
-    title: "Inteligência Artificial",
-    description:
-      "Soluções com GPT, Claude e modelos customizados aplicados ao seu contexto.",
-  },
-  {
-    title: "Automações",
-    description:
-      "Processos repetitivos transformados em rotinas inteligentes e confiáveis.",
-  },
-  {
-    title: "Consultoria",
-    description:
-      "Diagnóstico técnico, arquitetura e roadmap para decisões com confiança.",
-  },
-  {
-    title: "Gestão de Projetos",
-    description:
-      "Entrega organizada, comunicação clara e foco em resultado de negócio.",
+    code: "04",
+    title: "Consultoria Técnica & Presença Institucional",
+    summary:
+      "Apoio estratégico para decisões de tecnologia, gestão de entregas e construção de canais digitais que posicionam marcas B2B com credibilidade.",
+    deliverables: [
+      "Diagnóstico técnico, roadmap evolutivo e revisão arquitetural",
+      "Gestão de escopo, marcos de entrega e ambientes de homologação",
+      "Sites institucionais de alta performance focados em autoridade B2B",
+    ],
   },
 ] as const;
 
-export const PROCESS_STEPS = [
+export const DELIVERY_STAGES = [
   {
     step: "01",
-    title: "Descoberta",
-    description: "Entendemos o problema, o contexto e os objetivos do negócio.",
+    title: "Diagnóstico & Escopo Documentado",
+    description:
+      "Mapeamos processos, riscos, integrações e regras de negócio antes de escrever código. Você aprova escopo, marcos e orçamento com clareza.",
+    artifact: "Entregável: Especificação funcional e cronograma de marcos",
   },
   {
     step: "02",
-    title: "Arquitetura",
-    description: "Definimos stack, fluxos e estrutura técnica para escalar.",
+    title: "Arquitetura, Dados & Segurança",
+    description:
+      "Definimos modelagem de dados, autenticação, papéis de permissão e infraestrutura alinhada à LGPD e à capacidade de crescimento da operação.",
+    artifact: "Entregável: Desenho técnico e contrato de dados",
   },
   {
     step: "03",
-    title: "Desenvolvimento",
-    description: "Construímos com qualidade, testes e entregas incrementais.",
+    title: "Engenharia & Homologação",
+    description:
+      "Construção em ciclos incrementais com repositório versionado, revisões técnicas e ambiente de validação antes de ir para produção.",
+    artifact: "Entregável: Sprints auditáveis e ambiente de homologação",
   },
   {
     step: "04",
-    title: "Evolução",
-    description: "Monitoramos, otimizamos e evoluímos o produto continuamente.",
-  },
-] as const;
-
-export const TECHNOLOGIES = [
-  { id: "react", name: "React" },
-  { id: "nextjs", name: "Next.js" },
-  { id: "typescript", name: "TypeScript" },
-  { id: "nodejs", name: "Node.js" },
-  { id: "express", name: "Express" },
-  { id: "nestjs", name: "NestJS" },
-  { id: "golang", name: "Go" },
-  { id: "python", name: "Python" },
-  { id: "svelte", name: "Svelte" },
-  { id: "html", name: "HTML" },
-  { id: "css", name: "CSS" },
-  { id: "tailwindcss", name: "Tailwind CSS" },
-  { id: "vite", name: "Vite" },
-  { id: "webpack", name: "Webpack" },
-  { id: "vitest", name: "Vitest" },
-  { id: "jest", name: "Jest" },
-  { id: "zustand", name: "Zustand" },
-  { id: "yaml", name: "YAML" },
-  { id: "graphql", name: "GraphQL" },
-  { id: "trpc", name: "tRPC" },
-  { id: "grpc", name: "gRPC" },
-  { id: "swagger", name: "Swagger" },
-  { id: "http", name: "HTTP" },
-  { id: "http2", name: "HTTP/2" },
-  { id: "oauth", name: "OAuth" },
-  { id: "oauth2", name: "OAuth 2" },
-  { id: "rtmp", name: "RTMP" },
-  { id: "mcp", name: "MCP" },
-  { id: "postgresql", name: "PostgreSQL" },
-  { id: "mongodb", name: "MongoDB" },
-  { id: "mysql", name: "MySQL" },
-  { id: "prisma", name: "Prisma" },
-  { id: "supabase", name: "Supabase" },
-  { id: "pandas", name: "Pandas" },
-  { id: "docker", name: "Docker" },
-  { id: "portainer", name: "Portainer" },
-  { id: "nginx", name: "Nginx" },
-  { id: "traefik", name: "Traefik" },
-  { id: "linux", name: "Linux" },
-  { id: "npm", name: "npm" },
-  { id: "pnpm", name: "pnpm" },
-  { id: "github", name: "GitHub" },
-  { id: "vercel", name: "Vercel" },
-  { id: "netlify", name: "Netlify" },
-  { id: "aws", name: "AWS" },
-  { id: "azure", name: "Azure" },
-  { id: "cloudflare", name: "Cloudflare" },
-  { id: "openai", name: "OpenAI" },
-  { id: "claude", name: "Claude" },
-  { id: "solidity", name: "Solidity" },
-  { id: "clean-architecture", name: "Clean Architecture" },
-  { id: "trello", name: "Trello" },
-  { id: "jira", name: "Jira" },
-  { id: "notion", name: "Notion" },
-] as const;
-
-export type Technology = (typeof TECHNOLOGIES)[number];
-
-export const PROJECTS = [
-  {
-    title: "Plataforma SaaS Financeira",
-    category: "Web App",
+    title: "Produção, Documentação & Suporte",
     description:
-      "Dashboard completo com autenticação, billing e métricas em tempo real.",
-  },
-  {
-    title: "API de Integrações",
-    category: "Backend",
-    description:
-      "Gateway unificado conectando ERPs, CRMs e serviços de pagamento.",
-  },
-  {
-    title: "Assistente com IA",
-    category: "Inteligência Artificial",
-    description:
-      "Chat corporativo com contexto privado, RAG e automações internas.",
+      "Implantação assistida, transferência de conhecimento e canal técnico dedicado para evolução contínua e sustentação operacional.",
+    artifact: "Entregável: Código documentado + canal suporte@2jtech.net",
   },
 ] as const;
 
-export const DIFFERENTIALS = [
+export const GOVERNANCE_COMMITMENTS = [
   {
-    title: "Código próprio",
-    description: "Sem dependência de templates frágeis. Arquitetura pensada para o longo prazo.",
+    title: "Propriedade Intelectual Integral",
+    description:
+      "Todo código-fonte, repositório e documentação produzidos sob medida pertencem integralmente à sua empresa, sem aprisionamento proprietário.",
   },
   {
-    title: "Design premium",
-    description: "Interfaces sofisticadas que comunicam confiança e autoridade técnica.",
+    title: "Conformidade Contratual e Fiscal",
+    description:
+      "Operação formalizada em pessoa jurídica, com escopo definido em contrato, comunicação rastreável e emissão fiscal regular.",
   },
   {
-    title: "Entrega consultiva",
-    description: "Mais do que código: decisões estratégicas alinhadas ao negócio.",
+    title: "Privacidade e Segurança por Design",
+    description:
+      "Separação de ambientes, validação estrita de entradas, proteção de credenciais e tratamento de dados orientado às diretrizes da LGPD.",
   },
   {
-    title: "Escalabilidade real",
-    description: "Sistemas preparados para crescer em usuários, dados e complexidade.",
+    title: "Atendimento Direto com a Engenharia",
+    description:
+      "Sem camadas comerciais que desconectam promessa e entrega: alinhamento direto com quem projeta e desenvolve o software.",
   },
 ] as const;
 
-export const TESTIMONIALS = [
+export type TechId =
+  | "react"
+  | "nextjs"
+  | "typescript"
+  | "tailwindcss"
+  | "nodejs"
+  | "nestjs"
+  | "python"
+  | "golang"
+  | "postgresql"
+  | "prisma"
+  | "supabase"
+  | "mongodb"
+  | "docker"
+  | "aws"
+  | "openai"
+  | "claude";
+
+export type TechItem = {
+  id: TechId;
+  name: string;
+  role: string;
+};
+
+export const TECH_LAYERS: {
+  layer: string;
+  description: string;
+  items: TechItem[];
+}[] = [
   {
-    quote:
-      "A 2J Tech elevou nosso produto a outro patamar. Qualidade técnica e comunicação impecáveis.",
-    author: "Marina Costa",
-    role: "CEO, Aurora Labs",
+    layer: "Aplicação & Interface",
+    description: "Interfaces responsivas, acessíveis e de carregamento rápido.",
+    items: [
+      { id: "react", name: "React", role: "Interfaces ricas" },
+      { id: "nextjs", name: "Next.js", role: "SSR, App Router & SEO" },
+      { id: "typescript", name: "TypeScript", role: "Tipagem estrita" },
+      { id: "tailwindcss", name: "Tailwind CSS", role: "Design system consistente" },
+    ],
   },
   {
-    quote:
-      "Entregaram uma API sólida, documentada e pronta para escalar. Parceria de verdade.",
-    author: "Rafael Mendes",
-    role: "CTO, Vertex Systems",
+    layer: "Backend & Serviços",
+    description: "APIs resilientes, regras de negócio e alta concorrência.",
+    items: [
+      { id: "nodejs", name: "Node.js", role: "Runtime assíncrono" },
+      { id: "nestjs", name: "NestJS", role: "Arquitetura modular" },
+      { id: "python", name: "Python", role: "Automação & dados" },
+      { id: "golang", name: "Go", role: "Serviços de alta performance" },
+    ],
   },
   {
-    quote:
-      "Do briefing à produção, o processo foi transparente e o resultado superou expectativas.",
-    author: "Camila Duarte",
-    role: "Head de Produto, Pulse Digital",
+    layer: "Dados & Persistência",
+    description: "Integridade transacional, auditoria e consultas eficientes.",
+    items: [
+      { id: "postgresql", name: "PostgreSQL", role: "Banco relacional principal" },
+      { id: "prisma", name: "Prisma", role: "Modelagem e migrations" },
+      { id: "supabase", name: "Supabase", role: "Auth, Postgres & Storage" },
+      { id: "mongodb", name: "MongoDB", role: "Dados semiestruturados" },
+    ],
   },
-] as const;
+  {
+    layer: "Cloud, Containers & IA",
+    description: "Implantação controlada e integração segura de modelos.",
+    items: [
+      { id: "docker", name: "Docker", role: "Padronização de ambientes" },
+      { id: "aws", name: "AWS", role: "Infraestrutura em nuvem" },
+      { id: "openai", name: "OpenAI", role: "Modelos & automação" },
+      { id: "claude", name: "Claude", role: "Raciocínio e agentes MCP" },
+    ],
+  },
+];

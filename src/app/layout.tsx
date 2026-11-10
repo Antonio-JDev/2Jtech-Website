@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import {
+  SITE_BRAND_TITLE,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_NAME,
@@ -19,7 +20,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#081018",
+  themeColor: "#07090d",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -33,12 +34,12 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [...SITE_KEYWORDS],
-  authors: [{ name: SITE_NAME, url: SITE_URL }],
-  creator: SITE_NAME,
-  publisher: SITE_NAME,
-  applicationName: SITE_NAME,
+  authors: [{ name: SITE_BRAND_TITLE, url: SITE_URL }],
+  creator: SITE_BRAND_TITLE,
+  publisher: SITE_BRAND_TITLE,
+  applicationName: SITE_BRAND_TITLE,
   category: "technology",
-  classification: "Software Development Company",
+  classification: "Software Engineering and Technology Consulting",
   alternates: {
     canonical: "/",
     languages: {
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: SITE_NAME,
+    siteName: SITE_BRAND_TITLE,
     locale: "pt_BR",
     type: "website",
     images: [
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "2J Tech — Softwares, Consultoria & Gestão",
+        alt: "2J Tech — Desenvolvimento de Software que Transforma Negócios",
       },
     ],
   },
@@ -92,7 +93,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   other: {
-    "msapplication-TileColor": "#081018",
+    "msapplication-TileColor": "#07090d",
     "msapplication-TileImage": "/icons/icon-192.png",
   },
 };

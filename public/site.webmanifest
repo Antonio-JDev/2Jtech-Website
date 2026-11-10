@@ -1,11 +1,11 @@
 {
-  "name": "2J Tech",
+  "name": "2J Tech Softwares",
   "short_name": "2J Tech",
-  "description": "Empresa de software especializada em sistemas web, APIs, inteligência artificial e desenvolvimento sob medida.",
+  "description": "Criamos sistemas, plataformas e soluções tecnológicas sob medida para empresas que precisam automatizar processos, integrar operações e crescer com tecnologia.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#081018",
-  "theme_color": "#081018",
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
   "lang": "pt-BR",
   "icons": [
     {
