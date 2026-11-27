@@ -24,7 +24,6 @@ export function About() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <Reveal>
             <SectionHeading
-              eyebrow="Sobre a Empresa"
               title="Software orientado a resultado, sustentado por engenharia"
             />
             <div className="space-y-4 text-base leading-relaxed text-[#cbd5e1]">
@@ -43,17 +42,18 @@ export function About() {
               <p>
                 Por trás de cada entrega está uma base sólida de engenharia de
                 software: escopo formalizado, comunicação direta com quem
-                projeta o sistema, código versionado e transferência integral de
-                propriedade intelectual.
+                projeta o sistema, código versionado e suporte contínuo depois
+                da entrada em produção.
               </p>
-              <p className="border-l-2 border-accent pl-4 text-sm font-semibold uppercase tracking-[0.12em] text-foreground">
-                Do planejamento à entrega, tecnologia com propósito.
+              <p className="pt-4 text-xl font-semibold leading-snug tracking-[-0.02em] text-foreground sm:text-2xl">
+                Do planejamento à entrega,{" "}
+                <span className="text-accent">tecnologia com propósito.</span>
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <aside className="panel-elevated rounded-[16px] p-6 sm:p-7">
+            <aside className="panel-elevated horizon-glow rounded-[16px] p-6 sm:p-7">
               <div className="flex items-center gap-2.5 border-b border-white/[0.08] pb-4">
                 <Building2 size={18} className="text-accent" />
                 <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">

@@ -19,7 +19,11 @@
 }
 
 html {
+  color-scheme: dark;
   scroll-behavior: smooth;
+  /* Anchors land below the fixed 72px header */
+  scroll-padding-top: 88px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -27,11 +31,63 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  caret-color: var(--color-accent);
+}
+
+a,
+button,
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 ::selection {
   background: color-mix(in srgb, var(--color-accent) 30%, transparent);
   color: #fff;
+}
+
+/* Browser surfaces carry the palette too */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 75%, transparent);
+  outline-offset: 3px;
+}
+
+html {
+  scrollbar-color: #1f2937 var(--color-background);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border: 2px solid var(--color-background);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+select option {
+  background-color: #0d1117;
+  color: var(--color-foreground);
 }
 
 .panel {
@@ -73,43 +129,138 @@ body {
   background-size: 64px 64px;
 }
 
+/* Grid fades out toward the edges instead of ending in a hard box */
+.arch-grid-fade {
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 100%);
+}
+
 .section-padding {
-  padding-block: clamp(3.75rem, 6vw, 5.75rem);
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
 }
 
 @media (max-width: 779px) {
   .section-padding {
-    padding-block: 3.5rem;
+    padding-block: 4rem;
   }
 }
 
-@keyframes headline-shimmer {
+/* Pointer-tracked spotlight: a soft accent light follows the cursor
+   across a surface. --mx/--my are written by trackSpotlight(). */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(34, 211, 238, 0.075),
+    transparent 60%
+  );
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Hero ambient light: two slow-drifting soft lights behind the visual */
+@keyframes aurora-drift {
   0% {
-    background-position: 0% 50%;
+    transform: translate3d(-4%, -2%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(5%, 4%, 0) scale(1.08);
   }
   100% {
-    background-position: 200% 50%;
+    transform: translate3d(-4%, -2%, 0) scale(1);
   }
 }
 
-.headline-gradient-motion {
-  background: linear-gradient(
-    90deg,
-    #22d3ee 0%,
-    #a5f3fc 35%,
-    #38bdf8 68%,
-    #22d3ee 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: headline-shimmer 6s linear infinite;
+.hero-aurora {
+  background:
+    radial-gradient(40% 45% at 70% 45%, rgba(34, 211, 238, 0.13), transparent 70%),
+    radial-gradient(30% 35% at 85% 70%, rgba(56, 189, 248, 0.08), transparent 70%);
+  filter: blur(20px);
+  animation: aurora-drift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* CTA climax: a horizon of light rising from the bottom edge */
+.cta-horizon {
+  background:
+    radial-gradient(60% 80% at 50% 120%, rgba(34, 211, 238, 0.22), transparent 70%),
+    radial-gradient(35% 50% at 50% 110%, rgba(165, 243, 252, 0.16), transparent 70%);
+}
+
+.cta-horizon-line {
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.7), transparent);
+}
+
+/* Horizon glow: the CTA's bottom light as a drop-in for any card.
+   Painted on ::after under the content (isolation keeps it inside the card).
+   Kept softer than .cta-horizon so the CTA stays the climax. */
+.horizon-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.horizon-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 6%, rgba(34, 211, 238, 0.7) 50%, transparent 94%) bottom / 100% 1px no-repeat,
+    radial-gradient(60% 65% at 50% 120%, rgba(34, 211, 238, 0.2), transparent 70%),
+    radial-gradient(30% 36% at 50% 110%, rgba(165, 243, 252, 0.13), transparent 70%);
+  opacity: 0.8;
+  transition: opacity 500ms ease-out;
+}
+
+.horizon-glow:hover::after,
+.horizon-glow:focus-within::after {
+  opacity: 1;
+}
+
+/* Hero portrait (transparent cut-out): the floor dissolves into the page */
+.portrait-fade {
+  mask-image: linear-gradient(to bottom, #000 66%, transparent 97%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 97%);
+}
+
+/* Services autoplay progress (duration set inline) */
+@keyframes svc-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.svc-progress {
+  transform: scaleX(0);
+  animation-name: svc-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .headline-gradient-motion {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-aurora {
     animation: none;
-    background-position: 0% 50%;
   }
 }

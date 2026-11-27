@@ -1,108 +1,89 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HeroVisual } from "@/components/HeroVisual";
-import { Reveal } from "@/lib/reveal";
 
 const HEADLINE_LEAD_WORDS = ["Desenvolvimento", "de", "software"];
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
 
+  // Words resolve from a soft blur into focus: the page's one authored entrance.
+  const wordIn = (delay: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18, filter: "blur(10px)" },
+          animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+          transition: { duration: 0.7, delay, ease: EASE_OUT_EXPO },
+        };
+
+  const fadeUp = (delay: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 12 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay, ease: EASE_OUT_EXPO },
+        };
+
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-[calc(100svh-72px)] items-center overflow-hidden border-b border-white/[0.06] pt-[72px]"
+      className="relative isolate flex overflow-hidden border-b border-white/[0.06] pt-[72px]"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="arch-grid absolute inset-0 opacity-70" />
-        <div className="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.08),transparent_65%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+        <div className="arch-grid arch-grid-fade absolute inset-0" />
+        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.09),transparent_65%)]" />
+        <div className="hero-aurora absolute -inset-[10%]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-8 sm:px-6 md:px-8 md:py-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-10 xl:gap-14 xl:py-16">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-2 px-5 pb-8 pt-6 md:px-8 md:py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:pb-10 lg:pt-[46px] xl:gap-16">
         <div className="relative z-10">
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-            className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-3 py-1.5 text-[11px] font-medium text-[#cbd5e1] sm:px-3.5 sm:text-xs"
-          >
-            <ShieldCheck size={14} className="shrink-0 text-accent" />
-            <span className="truncate sm:whitespace-normal">
-              Do planejamento à entrega, tecnologia com propósito.
-            </span>
-          </motion.div>
-
-          <h1 className="mt-5 max-w-xl text-[2rem] font-semibold leading-[1.12] tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] xl:text-[3.2rem]">
-            <span className="inline-flex flex-wrap gap-x-[0.26em]">
-              {HEADLINE_LEAD_WORDS.map((word, index) => (
-                <motion.span
-                  key={word}
-                  initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.42,
-                    delay: index * 0.07,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="inline-block"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </span>{" "}
-            <motion.span
-              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.24,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="relative inline-block"
-            >
-              <span className="headline-gradient-motion">
-                que transforma negócios.
-              </span>
+          <h1 className="max-w-[13ch] text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-[3.25rem] lg:text-[clamp(2.6rem,7.2svh,3.6rem)] xl:text-[clamp(2.6rem,7.8svh,4.25rem)]">
+            {HEADLINE_LEAD_WORDS.map((word, index) => (
               <motion.span
-                aria-hidden
-                initial={reduceMotion ? false : { scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{
-                  duration: 0.65,
-                  delay: 0.42,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="absolute -bottom-1 left-0 right-0 h-[2px] origin-left rounded-full bg-gradient-to-r from-accent via-accent/60 to-transparent"
-              />
+                key={word}
+                {...wordIn(0.05 + index * 0.08)}
+                className="mr-[0.24em] inline-block"
+              >
+                {word}
+              </motion.span>
+            ))}
+            <motion.span
+              {...wordIn(0.32)}
+              className="inline-block text-accent"
+            >
+              que transforma negócios.
             </motion.span>
           </h1>
 
           <motion.p
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.28 }}
-            className="mt-5 max-w-lg text-sm leading-relaxed text-[#cbd5e1] sm:text-base lg:text-[1.0625rem]"
+            {...fadeUp(0.45)}
+            className="mt-6 text-lg leading-snug text-[#b6c2d1] lg:text-xl"
           >
-            Criamos sistemas, plataformas e soluções tecnológicas sob medida para
-            empresas que precisam automatizar processos, integrar operações e
-            crescer com tecnologia.
+            Do planejamento à entrega, tecnologia com propósito.
           </motion.p>
 
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.36 }}
-            className="mt-7 flex flex-wrap gap-3"
+            {...fadeUp(0.55)}
+            className="mt-8 hidden flex-wrap gap-3 lg:flex"
           >
             <Button
               href="#contato"
               variant="primary"
-              className="w-full sm:w-auto"
+              className="group w-full sm:w-auto"
             >
               Solicitar Proposta
+              <ArrowRight
+                size={16}
+                aria-hidden
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              />
             </Button>
             <Button
               href="#cases"
@@ -112,20 +93,11 @@ export function Hero() {
               Explorar Cases
             </Button>
           </motion.div>
-
-          <motion.p
-            initial={reduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.45, delay: 0.45 }}
-            className="mt-6 text-xs leading-relaxed text-muted"
-          >
-            Sistemas sob medida · Integrações &amp; IA · Código-fonte 100% seu
-          </motion.p>
         </div>
 
-        <Reveal delay={0.05} className="min-w-0">
+        <div className="min-w-0">
           <HeroVisual />
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -51,6 +51,17 @@ export const PRACTICE_AREAS = [
       "Sites institucionais de alta performance focados em autoridade B2B",
     ],
   },
+  {
+    code: "05",
+    title: "Suporte, Infraestrutura & Manutenção",
+    summary:
+      "Sustentação do que já está rodando na sua empresa: suporte técnico, servidores locais e manutenção de sistemas, inclusive os desenvolvidos por terceiros.",
+    deliverables: [
+      "Suporte técnico com canal dedicado e acompanhamento de chamados",
+      "Implantação e administração de servidores locais (on-premise)",
+      "Manutenção corretiva e evolutiva de softwares de terceiros",
+    ],
+  },
 ] as const;
 
 export const DELIVERY_STAGES = [
@@ -86,9 +97,9 @@ export const DELIVERY_STAGES = [
 
 export const GOVERNANCE_COMMITMENTS = [
   {
-    title: "Propriedade Intelectual Integral",
+    title: "Suporte & Sustentação Contínua",
     description:
-      "Todo código-fonte, repositório e documentação produzidos sob medida pertencem integralmente à sua empresa, sem aprisionamento proprietário.",
+      "Suporte técnico com canal dedicado, manutenção evolutiva e corretiva, inclusive de softwares de terceiros, e implantação de servidores locais quando a operação exige.",
   },
   {
     title: "Conformidade Contratual e Fiscal",
