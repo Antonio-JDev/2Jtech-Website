@@ -10,6 +10,28 @@ import { Button } from "@/components/ui/Button";
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string | null>(null);
+
+  // Scrollspy: highlight the nav link of the section crossing the upper third.
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) =>
+      document.querySelector<HTMLElement>(link.href),
+    ).filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const href = `#${entry.target.id}`;
+          if (entry.isIntersecting) setActiveHref(href);
+          else setActiveHref((current) => (current === href ? null : current));
+        }
+      },
+      { rootMargin: "-35% 0px -60% 0px" },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -62,9 +84,18 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-[#cbd5e1] transition-colors duration-200 hover:text-foreground"
+              aria-current={activeHref === link.href ? "true" : undefined}
+              className={`relative py-1 text-sm font-medium transition-colors duration-200 hover:text-foreground ${
+                activeHref === link.href ? "text-foreground" : "text-[#a8b4c4]"
+              }`}
             >
               {link.label}
+              <span
+                aria-hidden
+                className={`absolute -bottom-0.5 left-0 right-0 h-px origin-center bg-accent transition-transform duration-300 ease-out ${
+                  activeHref === link.href ? "scale-x-100" : "scale-x-0"
+                }`}
+              />
             </Link>
           ))}
         </nav>
@@ -75,15 +106,25 @@ export function Header() {
           </Button>
         </div>
 
-        <button
-          type="button"
-          className="relative z-10 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-white/15 text-foreground transition-colors hover:border-white/30 lg:hidden"
-          aria-expanded={open}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="relative z-10 flex items-center gap-2 lg:hidden">
+          <Button
+            href="#contato"
+            variant="primary"
+            className="h-10 px-3.5! py-0! text-[13px]! tracking-normal!"
+            onClick={() => setOpen(false)}
+          >
+            Solicitar Proposta
+          </Button>
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-white/15 text-foreground transition-colors hover:border-white/30"
+            aria-expanded={open}
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {open ? (

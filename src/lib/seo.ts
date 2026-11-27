@@ -7,8 +7,8 @@ export const SITE_LOCATION = "Itajaí, SC — Brasil";
 export const SITE_EMAIL = "contato@2jtech.net";
 export const SITE_SUPPORT_EMAIL = "suporte@2jtech.net";
 export const SITE_ADMIN_EMAIL = "adm@2jtech.net";
-export const SITE_PHONE_DISPLAY = "(47) 9636-2471";
-export const SITE_PHONE_RAW = "554796362471";
+export const SITE_PHONE_DISPLAY = "(47) 98817-2067";
+export const SITE_PHONE_RAW = "5547988172067";
 export const SITE_GITHUB_URL = "https://github.com/2jtechsoftware";
 
 export const SITE_TITLE =
@@ -41,7 +41,7 @@ export const organizationJsonLd = {
   logo: `${SITE_URL}/icons/icon-512.png`,
   image: `${SITE_URL}/og-image.png`,
   email: SITE_EMAIL,
-  telephone: "+55-47-9636-2471",
+  telephone: "+55-47-98817-2067",
   description: SITE_DESCRIPTION,
   sameAs: [SITE_GITHUB_URL],
   address: {
@@ -55,7 +55,7 @@ export const organizationJsonLd = {
       "@type": "ContactPoint",
       contactType: "sales",
       email: SITE_EMAIL,
-      telephone: "+55-47-9636-2471",
+      telephone: "+55-47-98817-2067",
       availableLanguage: ["Portuguese", "pt-BR"],
     },
     {

@@ -169,7 +169,6 @@ export function Contact() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
-            eyebrow="Contato Comercial"
             title="Converse com nossa equipe de software sobre o seu projeto"
             description="Compartilhe contexto, prazo e objetivo operacional. Retornamos com análise técnica objetiva e proposta formal."
           />
@@ -177,7 +176,7 @@ export function Contact() {
 
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <Reveal>
-            <div className="panel space-y-6 rounded-[16px] p-6 sm:p-7">
+            <div className="panel horizon-glow space-y-6 rounded-[16px] p-6 sm:p-7">
               <div>
                 <h3 className="text-lg font-semibold text-foreground">
                   Canais Diretos da 2J Tech
@@ -263,7 +262,7 @@ export function Contact() {
           <Reveal delay={0.05}>
             <form
               onSubmit={onSubmit}
-              className="panel-elevated grid gap-4 rounded-[16px] p-6 sm:p-8 md:grid-cols-2"
+              className="panel-elevated horizon-glow grid gap-4 rounded-[16px] p-6 sm:p-8 md:grid-cols-2"
             >
               {projectLabel ? (
                 <div className="flex items-center justify-between gap-3 rounded-[12px] border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-foreground md:col-span-2">
@@ -305,7 +304,7 @@ export function Contact() {
                   autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
+                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-muted/60 hover:border-white/25 focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                   placeholder="Seu nome"
                 />
               </label>
@@ -318,7 +317,7 @@ export function Contact() {
                   autoComplete="organization"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
+                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-muted/60 hover:border-white/25 focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                   placeholder="Nome da empresa"
                 />
               </label>
@@ -330,9 +329,10 @@ export function Contact() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  spellCheck={false}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
+                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-muted/60 hover:border-white/25 focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                   placeholder="voce@empresa.com.br"
                 />
               </label>
@@ -345,7 +345,7 @@ export function Contact() {
                   autoComplete="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
+                  className="mt-2 w-full rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-muted/60 hover:border-white/25 focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                   placeholder="(47) 99999-9999"
                 />
               </label>
@@ -356,7 +356,7 @@ export function Contact() {
                   name="subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="mt-2 w-full cursor-pointer rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-accent"
+                  className="mt-2 w-full cursor-pointer rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 hover:border-white/25 focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                 >
                   {DEMAND_OPTIONS.map((option) => (
                     <option key={option} value={option}>
@@ -374,8 +374,8 @@ export function Contact() {
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="mt-2 w-full resize-y rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
-                  placeholder="Descreva o problema operacional, sistemas envolvidos, prazo desejado e objetivos..."
+                  className="mt-2 w-full resize-y rounded-[10px] border border-white/15 bg-[#07090d] px-3.5 py-2.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-muted/60 hover:border-white/25 focus:border-accent focus:ring-[3px] focus:ring-accent/15"
+                  placeholder="Descreva o problema operacional, sistemas envolvidos, prazo desejado e objetivos…"
                 />
               </label>
 
@@ -452,7 +452,7 @@ export function Contact() {
                 >
                   <Send size={15} />
                   {status === "submitting"
-                    ? "Enviando..."
+                    ? "Enviando…"
                     : "Enviar Solicitação"}
                 </Button>
 

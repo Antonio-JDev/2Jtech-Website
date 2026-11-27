@@ -95,25 +95,6 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
         ],
       },
       {
-        id: "previsoes",
-        label: "Previsões",
-        title: "Calendário de provisionamento",
-        description:
-          "Visão mensal de entradas e saídas previstas com detalhamento diário por parcela e cliente.",
-        accent: "#38BDF8",
-        images: ["/catalog/pd-financy/calendario-de-previsoes.png"],
-        stats: [
-          { label: "Projeção", value: "Diária" },
-          { label: "Visão", value: "Calendário" },
-          { label: "Detalhe", value: "Por parcela" },
-        ],
-        rows: [
-          "Previsão consolidada de entradas, gastos e saldo do período",
-          "Destaque visual para dias com vencimentos programados",
-          "Detalhamento por cliente e parcela ao selecionar a data",
-        ],
-      },
-      {
         id: "projetos",
         label: "Obras",
         title: "Projetos e obras ativas",
@@ -152,35 +133,13 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
         ],
       },
       {
-        id: "folha",
-        label: "Folha",
-        title: "Folha de fechamento individual",
-        description:
-          "Detalhamento transparente de produção, descontos e valor líquido por colaborador.",
-        accent: "#38BDF8",
-        images: ["/catalog/pd-financy/folha-funcionario.png"],
-        stats: [
-          { label: "Cálculo", value: "Líquido" },
-          { label: "Itens", value: "Auditáveis" },
-          { label: "Base", value: "Função/Diária" },
-        ],
-        rows: [
-          "Memória de cálculo com função, regime e custo base",
-          "Listagem detalhada de unidades executadas e subtotais",
-          "Fechamento líquido pronto para aprovação",
-        ],
-      },
-      {
         id: "relatorio",
         label: "Relatórios",
         title: "Relatórios financeiros e comparativos",
         description:
           "Análise de receitas, despesas e resultado por período, forma de pagamento e categoria com exportação em PDF.",
         accent: "#22D3EE",
-        images: [
-          "/catalog/pd-financy/relatorio.png",
-          "/catalog/pd-financy/relatorio-comparativo.png",
-        ],
+        images: ["/catalog/pd-financy/relatorio-comparativo.png"],
         stats: [
           { label: "Períodos", value: "1 a 12 meses" },
           { label: "Exportação", value: "PDF" },
@@ -190,6 +149,25 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
           "Filtros avançados por classificação e método de pagamento",
           "Comparativo visual entre períodos e categorias",
           "Exportação direta em PDF para prestação de contas",
+        ],
+      },
+      {
+        id: "acesso",
+        label: "Acesso",
+        title: "Acesso restrito à equipe",
+        description:
+          "Login próprio com a identidade da PD Gesso Drywall, recuperação de senha e alternância de tema claro/escuro.",
+        accent: "#38BDF8",
+        images: ["/catalog/pd-financy/pd-login.png"],
+        stats: [
+          { label: "Acesso", value: "Autenticado" },
+          { label: "Tema", value: "Claro / Escuro" },
+          { label: "Marca", value: "Do cliente" },
+        ],
+        rows: [
+          "Autenticação por e-mail e senha para a equipe interna",
+          "Fluxo de recuperação de senha",
+          "Interface com a identidade visual da empresa",
         ],
       },
     ],
@@ -467,6 +445,267 @@ export const CATALOG_PROJECTS: CatalogProject[] = [
           "Filtros por grandes obras, forros e projetos residenciais",
           "Registro fotográfico de execuções entregues",
           "Conversão integrada ao fluxo de contato comercial",
+        ],
+      },
+    ],
+  },
+  {
+    id: "grappy",
+    title: "Grappy",
+    category: "Plataforma SaaS",
+    sector: "Varejo & E-commerce",
+    tagline:
+      "Núcleo ERP + e-commerce multi-segmento: PDV, estoque, fiscal, financeiro e loja online no mesmo sistema, com packs que adaptam cada nicho.",
+    challenge:
+      "Atender varejistas de segmentos muito diferentes — assistência técnica, moda, autopeças, pet, food e distribuidoras — sem manter um sistema separado para cada nicho.",
+    solution:
+      "Plataforma multi-tenant com núcleo único (PDV e caixa, estoque unificado, NF-e/NFC-e, financeiro, multi-loja com RBAC e e-commerce B2C) e packs por segmento que adaptam fluxos como OS e IMEI, grade cor/tamanho e comandas com KDS.",
+    stack: ["SaaS Multi-tenant", "PDV & NF-e/NFC-e", "E-commerce B2C", "Multi-loja & RBAC"],
+    url: "https://grappy.com.br",
+    domain: "grappy.com.br",
+    thumbnailClassName: "object-[left_top]",
+    screens: [
+      {
+        id: "nucleo",
+        label: "Núcleo",
+        title: "PDV, estoque, fiscal e loja online no mesmo núcleo",
+        description:
+          "Um tenant, várias lojas: operação de balcão, estoque, emissão fiscal, financeiro e vitrine online compartilhando a mesma base — no desktop e no celular.",
+        accent: "#22D3EE",
+        images: ["/catalog/grappy/grappy-hero.png"],
+        stats: [
+          { label: "Operação", value: "PDV & Caixa" },
+          { label: "Fiscal", value: "NF-e / NFC-e" },
+          { label: "Lojas", value: "Multi-loja" },
+        ],
+        rows: [
+          "PDV e caixa integrados ao estoque unificado",
+          "Emissão de NF-e e NFC-e e controle financeiro",
+          "E-commerce B2C com o mesmo saldo do balcão",
+        ],
+      },
+      {
+        id: "ordens-servico",
+        label: "Ordens de serviço",
+        title: "Pack Assistência Técnica: ordens de serviço",
+        description:
+          "Abertura, acompanhamento e finalização de OS com checklist, fotos e assinatura, organizadas por etapa do reparo.",
+        accent: "#38BDF8",
+        images: ["/catalog/grappy/grappy-OS.png"],
+        stats: [
+          { label: "Etapas", value: "Análise → Entrega" },
+          { label: "Busca", value: "OS / IMEI" },
+          { label: "Orçamento", value: "Envio direto" },
+        ],
+        rows: [
+          "Funil por etapa: aberta, análise, aprovação, reparo, peças, pronto e entregue",
+          "Busca por OS, cliente, IMEI ou modelo do aparelho",
+          "Envio de orçamento, impressão e mensagem ao cliente a partir da OS",
+        ],
+      },
+      {
+        id: "acesso",
+        label: "Acesso",
+        title: "Entrada única para ERP, vitrine e operação",
+        description:
+          "Login e criação de conta self-service — o lojista entra e já opera o núcleo e o pack do seu segmento.",
+        accent: "#22D3EE",
+        images: ["/catalog/grappy/grappy-login.png"],
+        stats: [
+          { label: "Cadastro", value: "Self-service" },
+          { label: "Acesso", value: "RBAC" },
+          { label: "Licença", value: "SaaS" },
+        ],
+        rows: [
+          "Criação de conta e login no mesmo fluxo",
+          "Permissões por papel em cada loja",
+          "Um acesso para ERP, vitrine e operação",
+        ],
+      },
+    ],
+  },
+  {
+    id: "app-csc",
+    title: "APP CSC",
+    category: "Sistema Corporativo",
+    sector: "Contabilidade",
+    tagline:
+      "Sistema de gestão da Contabilidade Santa Catarina: cobranças e notas fiscais por competência, financeiro, alvarás e agenda do escritório.",
+    challenge:
+      "Controlar honorários, cobranças, notas fiscais, vencimentos de alvarás e a rotina de tarefas de um escritório contábil que atende dezenas de empresas, antes espalhados em planilhas e lembretes.",
+    solution:
+      "Plataforma web sob medida com painel por competência, ciclo automático de cobrança e NFS-e, controle financeiro multibanco com boleto/Pix, gestão de licenças por urgência de vencimento e agenda operacional da equipe.",
+    stack: ["Plataforma Web", "Cobrança Boleto/Pix", "NFS-e Automática", "Gestão de Alvarás"],
+    url: "https://portal.contabilidadestacatarina.com.br",
+    domain: "portal.contabilidadestacatarina.com.br",
+    screens: [
+      {
+        id: "competencia",
+        label: "Competência",
+        title: "Painel da competência",
+        description:
+          "Cobranças, recebimentos e notas fiscais do mês, com destaque para o que precisa de intervenção humana.",
+        accent: "#22D3EE",
+        images: ["/catalog/appCSC/dashboard-CSC.jpeg"],
+        stats: [
+          { label: "Ciclo", value: "Mensal" },
+          { label: "Fiscal", value: "NFS-e auto" },
+          { label: "Exportação", value: "CSV" },
+        ],
+        rows: [
+          "A receber, recebido no banco e notas autorizadas em um só painel",
+          "Alertas de pagas sem nota, vencidas e aguardando pagamento",
+          "Reprocessamento de notas presas com um clique",
+        ],
+      },
+      {
+        id: "financeiro",
+        label: "Financeiro",
+        title: "Controle financeiro multibanco",
+        description:
+          "Contas a pagar e a receber, fluxo de caixa e geração das cobranças do mês por banco emissor.",
+        accent: "#38BDF8",
+        images: ["/catalog/appCSC/CSC-controle-financeiro.png"],
+        stats: [
+          { label: "Cobrança", value: "Boleto / Pix" },
+          { label: "Bancos", value: "Multibanco" },
+          { label: "Previsão", value: "Por período" },
+        ],
+        rows: [
+          "Geração das cobranças do mês e serviços avulsos",
+          "Baixa, boleto, prorrogação e promessa de pagamento por conta",
+          "Previsão de entrada no período com parcelas em atraso",
+        ],
+      },
+      {
+        id: "alvaras",
+        label: "Alvarás",
+        title: "Licenças e certificados por urgência",
+        description:
+          "Alvarás, AVCB, licenças sanitárias e certificados digitais dos clientes ordenados pelo vencimento.",
+        accent: "#22D3EE",
+        images: ["/catalog/appCSC/CSC-alvaras.png"],
+        stats: [
+          { label: "Ordem", value: "Por urgência" },
+          { label: "Regras", value: "Anual / 365d" },
+          { label: "Aviso", value: "Ao cliente" },
+        ],
+        rows: [
+          "Situação vencida, crítica, atenção ou em dia por documento",
+          "Regras de validade por tipo de documento e município",
+          "Aviso ao cliente e renovação direto da lista",
+        ],
+      },
+      {
+        id: "agenda",
+        label: "Agenda",
+        title: "Agenda e tarefas do escritório",
+        description:
+          "Calendário operacional de compromissos, tarefas e metas, separado por agendas como folha, alvarás e finanças.",
+        accent: "#38BDF8",
+        images: ["/catalog/appCSC/CSC-agenda.png"],
+        stats: [
+          { label: "Visão", value: "Mês / Semana" },
+          { label: "Agendas", value: "Por área" },
+          { label: "Tarefas", value: "Em lote" },
+        ],
+        rows: [
+          "Compromissos e tarefas em um calendário compartilhado",
+          "Agendas por área: folha, alvarás, pagamentos e finanças",
+          "Criação rápida de tarefas em lote",
+        ],
+      },
+      {
+        id: "acesso",
+        label: "Acesso",
+        title: "Acesso com a identidade do escritório",
+        description:
+          "Login próprio da Contabilidade Santa Catarina para a gestão contábil, honorários, societário e faturamento.",
+        accent: "#22D3EE",
+        images: ["/catalog/appCSC/CSC-login.png"],
+        stats: [
+          { label: "Acesso", value: "Autenticado" },
+          { label: "Marca", value: "Do cliente" },
+          { label: "Escopo", value: "Escritório" },
+        ],
+        rows: [
+          "Autenticação por e-mail e senha",
+          "Identidade visual do escritório",
+          "Ponto de entrada único para toda a operação",
+        ],
+      },
+    ],
+  },
+  {
+    id: "s3e-system-pro",
+    title: "S3E System Pro",
+    category: "Sistema Corporativo",
+    sector: "Engenharia Elétrica",
+    tagline:
+      "Sistema que conecta gestão comercial, projetos, operações e estoque da S3E Engenharia — com WhatsApp integrado e assistente de IA.",
+    challenge:
+      "Unificar funil de atendimento, orçamentos, ordens de serviço, estoque e a comunicação com clientes e obras, antes divididos entre planilhas e conversas soltas no WhatsApp.",
+    solution:
+      "Plataforma web sob medida com dashboard de indicadores, funil comercial, orçamentos e vendas, ordens de serviço, tarefas internas, gestão de frota e central de WhatsApp integrada ao sistema, com assistente de IA.",
+    stack: ["Plataforma Web", "WhatsApp Integrado", "Assistente IA", "Gestão Comercial & OS"],
+    domain: "S3E System Pro · Sistema Interno",
+    thumbnailClassName: "object-[left_top]",
+    screens: [
+      {
+        id: "dashboard",
+        label: "Dashboard",
+        title: "Desempenho e evolução da operação",
+        description:
+          "Orçamentos aprovados, OS em andamento, quadros produzidos e clientes atendidos, com evolução por período.",
+        accent: "#22D3EE",
+        images: ["/catalog/s3e-system-pro/S3E-dashboard.png"],
+        stats: [
+          { label: "Período", value: "Configurável" },
+          { label: "KPIs", value: "Comercial & OS" },
+          { label: "Saída", value: "Relatórios" },
+        ],
+        rows: [
+          "Cards de indicadores com variação no período",
+          "Evolução de orçamentos criados, aprovados e em análise",
+          "Evolução de ordens de serviço por estágio de progresso",
+        ],
+      },
+      {
+        id: "whatsapp",
+        label: "WhatsApp",
+        title: "Central de WhatsApp integrada",
+        description:
+          "Conversas de clientes, obras e equipe dentro do sistema, ligadas a contatos, orçamentos e ordens de serviço.",
+        accent: "#38BDF8",
+        images: ["/catalog/s3e-system-pro/s3e-whatsapp-web.png"],
+        stats: [
+          { label: "Canal", value: "WhatsApp" },
+          { label: "Filtros", value: "Grupos / Clientes" },
+          { label: "Vínculo", value: "OS & Contatos" },
+        ],
+        rows: [
+          "Conversas individuais e grupos de obra em uma só tela",
+          "Filtros por não lidas, favoritas, grupos e clientes",
+          "Atendimento integrado ao funil e às ordens de serviço",
+        ],
+      },
+      {
+        id: "acesso",
+        label: "Acesso",
+        title: "Acesso da equipe S3E",
+        description:
+          "Login próprio com a identidade da S3E Engenharia Elétrica e recuperação de senha.",
+        accent: "#22D3EE",
+        images: ["/catalog/s3e-system-pro/S3E-login.png"],
+        stats: [
+          { label: "Acesso", value: "Autenticado" },
+          { label: "Marca", value: "Do cliente" },
+          { label: "Uso", value: "Interno" },
+        ],
+        rows: [
+          "Autenticação por e-mail e senha",
+          "Recuperação de senha self-service",
+          "Identidade visual da S3E Engenharia",
         ],
       },
     ],
